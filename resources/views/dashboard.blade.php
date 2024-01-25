@@ -125,10 +125,157 @@
     </section>
 
     <section class="section">
-    <div class="col-12 col-xl-4">
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-12 col-md-6 order-md-1 order-last">
+                        <h3>Daftar Taruna Berpuasa</h3>
+                        <p class="text-subtitle text-muted">23/11/2024.</p>
+                    </div>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            Taruna
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped" id="table1">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Unit</th>
+                                    <th>Kelas</th>
+                                    <th>Asrama</th>
+                                    <th>Pantangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Graiden</td>
+                                    <td>Unit C Satria</td>
+                                    <td>4 RPLK</td>
+                                    <td>A</td>
+                                    <td>
+                                        <span class="badge bg-success">Tidak ada</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Dale</td>
+                                    <td>Unit D Satria</td>
+                                    <td>4 RKS Red</td>
+                                    <td>F</td>
+                                    <td>
+                                        <span class="badge bg-success">Tidak ada</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nathaniel</td>
+                                    <td>Unit A Madya</td>
+                                    <td>3 RPK</td>
+                                    <td>C</td>
+                                    <td>
+                                        <span class="badge bg-danger">Ada</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-12 col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Data Keluhan</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-lg">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Tanggal</th>
+                                    <th>Keluhan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-md">
+                                                <img src="{{asset('images/faces/5.jpg')}}">
+                                            </div>
+                                            <p class="font-bold ms-3 mb-0">Si Cantik</p>
+                                        </div>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">22/11/2023</p>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">Nasi berair!</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-md">
+                                                <img src="{{asset('images/faces/2.jpg')}}">
+                                            </div>
+                                            <p class="font-bold ms-3 mb-0">Si Ganteng</p>
+                                        </div>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">22/11/2023</p>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">Lalat pada sayur</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-md">
+                                                <img src="{{asset('images/faces/8.jpg')}}">
+                                            </div>
+                                            <p class="font-bold ms-3 mb-0">Singh Eknoor</p>
+                                        </div>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">22/11/2023</p>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">Mie basi</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-md">
+                                                <img src="{{asset('images/faces/3.jpg')}}">
+                                            </div>
+                                            <p class="font-bold ms-3 mb-0">Rani Jhadav</p>
+                                        </div>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">22/11/2023</p>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">Susu basi</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- <div class="col-12 col-xl-4">
         <div class="card">
             <div class="card-header">
-                <h4>Profile Visit</h4>
+                <h4>Daftar Taruna Puasa</h4>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -205,7 +352,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     </section>
 </x-app-layout>
 
