@@ -29,4 +29,36 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
             return view('admin.component.accordion');
         })->name('accordion');
     });
+    Route::group(['prefix'=> 'datamakan','as'=> 'datamakan'], function() {
+        Route::get('/buat', function () {
+            return view('datamakan.buat');
+        })->name('buatdatamakan');
+        Route::get('/index', function () {
+            return view('datamakan.index');
+        })->name('indexdatamakan');
+    });
+    Route::group(['prefix'=> 'pantangan','as'=> 'pantangan'], function() {
+        Route::get('/pengajuan', function () {
+            return view('pantangan.pengajuan');
+        })->name('pengajuan');
+        Route::get('/index', function () {
+            return view('pantangan.index');
+        })->name('indexpantangan');
+    });
+    Route::group(['prefix'=> 'keluhan','as'=> 'keluhan'], function() {
+        Route::get('/laporan', function () {
+            return view('keluhan.laporan');
+        })->name('laporan');
+        Route::get('/index', function () {
+            return view('keluhan.index');
+        })->name('indexkeluhan');
+    });
+    Route::group(['prefix'=> 'puasa','as'=> 'puasa'], function() {
+        Route::get('/daftar', function () {
+            return view('puasa.daftar');
+        })->name('daftarpuasa');
+        Route::get('/index', function () {
+            return view('puasa.index');
+        })->name('indexpuasa');
+    });
 });
