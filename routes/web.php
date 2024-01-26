@@ -36,6 +36,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
         Route::get('/index', function () {
             return view('datamakan.index');
         })->name('index');
+        Route::get('/menu', function () {
+            return view('datamakan.menu');
+        })->name('menu');
     });
     Route::group(['prefix'=> 'pantangan','as'=> 'pantangan.'], function() {
         Route::get('/pengajuan', function () {

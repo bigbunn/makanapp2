@@ -6,6 +6,7 @@
     <x-maz-sidebar-item name="Data Makan" icon="bi bi-archive">
         <x-maz-sidebar-sub-item name="Buat Baru" :link="route('datamakan.buat')"></x-maz-sidebar-sub-item>
         <x-maz-sidebar-sub-item name="Lihat Data" :link="route('datamakan.index')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Menu Makan" :link="route('datamakan.menu')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
     <x-maz-sidebar-item name="Pantangan" icon="bi bi-stack">
         <x-maz-sidebar-sub-item name="Ajukan" :link="route('pantangan.pengajuan')"></x-maz-sidebar-sub-item>

@@ -9,8 +9,8 @@
 @import "./root";
 @import "./mazer-dark";
 
-// body.theme-dark {
-html[data-bs-theme="dark"] {
+body.theme-dark {
+// html[data-bs-theme="dark"] {
     // Bootstrap 
     @import "~bootstrap/scss/utilities";
     @import "~bootstrap/scss/reboot";
