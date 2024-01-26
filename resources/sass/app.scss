@@ -18,3 +18,10 @@ body .bi::before, [class^=bi-]::before, [class*=" bi-"]::before {
 
 // Mazer CSS
 @import "./mazer";
+
+// Utilities
+@import "./utilities";
+
+@import "./iconly.scss";
+
+@import "./themes/dark/app-dark.scss"

@@ -3,10 +3,14 @@
 @import "./../../variables";
 @import "./variables-dark";
 @import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark";
 @import "~bootstrap/scss/mixins";
 @import "./root";
+@import "./mazer-dark";
 
-body.theme-dark {
+// body.theme-dark {
+html[data-bs-theme="dark"] {
     // Bootstrap 
     @import "~bootstrap/scss/utilities";
     @import "~bootstrap/scss/reboot";
@@ -49,4 +53,5 @@ body.theme-dark {
     
     // Additional dark-mode CSS
     @import "./mazer-dark";
+    @import "~bootstrap/scss/utilities";
 }
