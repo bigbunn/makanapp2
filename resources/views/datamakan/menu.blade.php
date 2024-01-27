@@ -4,6 +4,37 @@
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Daftar Menu Makan</h3>
                 <button class="btn btn-success">Masukan Menu Baru</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#excelModal" class="btn btn-success"><img class="mx-2" src="{{asset('images/logo/excel.png')}}" alt="excel" style="max-width:20px" srcset="">Excel</button>
+
+                <div class="modal fade text-left" id="excelModal" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel1">Basic Modal</h5>
+                                <button type="button" class="close rounded-pill" data-bs-dismiss="modal"
+                                    aria-label="Close">
+                                    <i data-feather="x"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="card-text">Upload File Excel</p>
+                                <input type="file" class="basic-filepond">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-bs-dismiss="modal">
+                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                    <span class="d-none d-sm-block">Close</span>
+                                </button>
+                                <button type="button" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                                    <i class="bx bx-check d-block d-sm-none"></i>
+                                    <span class="d-none d-sm-block">Submit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">

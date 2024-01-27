@@ -8,5 +8,6 @@
 
 @livewireScripts
 <script src="{{ asset('/js/main.js') }}"></script>
-
+<script src="{{ asset('/js/pages/filepond.js') }}"></script>
+<script src="{{ asset('/js/extensions/toastify.js') }}"></script>
 {{ $script ?? ''}}
