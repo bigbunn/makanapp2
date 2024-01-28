@@ -1,11 +1,3 @@
-<script>
-    $( ".date" ).flatpickr({
-   dateFormat:"mm/dd/yyyy",
-   disableMobile: "true",
-   defaultDate: [new Date(), "2016-10-30"]
-    });
-</script>
-
 <x-app-layout>
     <x-slot name="header">
         <div class="row">
@@ -110,9 +102,21 @@
     </section>
 
     <section class="section">
+        <div class="col-12 col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Keluhan</h4>
+                </div>
+                <div class="card-body">
+                    <div style="width: 80%; margin: auto;">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         
-        
-    <!-- <div class="col-12 col-xl-4">
+    <div class="col-12 col-xl-4">
         <div class="card">
             <div class="card-header">
                 <h4>Daftar Taruna Puasa</h4>
@@ -192,8 +196,40 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     </section>
+
+    @section('script')
+        <!-- CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- <script src="~chart.js/dist/chart.js"></script> -->
+        @vite(["node_modules/chart.js/dist/chart.umd.js"])
+        @vite(["node_modules/chart.js/dist/chart.js"])
+        <!-- @vite(["resources/js/app.js"]) -->
+        <script>
+                var ctx = document.getElementById('barChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: @json($data['labels']),
+                        datasets: [{
+                            label: 'Data',
+                            data: @json($data['data']),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+        </script>
+    @endsection
 </x-app-layout>
 
 

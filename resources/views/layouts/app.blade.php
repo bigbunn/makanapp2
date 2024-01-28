@@ -9,6 +9,7 @@
 
         <!-- Styles -->
         @include('layouts.partials.styles')
+        @yield('styles')
     </head>
     <body>
         <div id="app">
@@ -33,5 +34,6 @@
         <!-- Scripts -->
         @include('layouts.partials.scripts')
 
+        @yield('script')
     </body>
 </html>

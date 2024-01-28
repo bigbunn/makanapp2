@@ -10,6 +10,8 @@ export default defineConfig({
             '~bootstrap': resolve(__dirname, 'node_modules/bootstrap'),
             '~bootstrap-icons': resolve(__dirname, 'node_modules/bootstrap-icons'),
             '~perfect-scrollbar': resolve(__dirname, 'node_modules/perfect-scrollbar'),
+            '~filepond':resolve(__dirname,'node_modules/filepond'),
+            '~chart.js':resolve(__dirname,'node_modules/chart.js'),
             '~@fontsource': resolve(__dirname, 'node_modules/@fontsource'),
         }
     },
