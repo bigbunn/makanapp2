@@ -201,10 +201,10 @@
 
     @section('script')
         <!-- CDN -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
         <!-- <script src="~chart.js/dist/chart.js"></script> -->
-        @vite(["node_modules/chart.js/dist/chart.umd.js"])
-        @vite(["node_modules/chart.js/dist/chart.js"])
+        <!-- @vite(["node_modules/chart.js/dist/chart.umd.js"])
+        @vite(["node_modules/chart.js/dist/chart.js"]) -->
         <!-- @vite(["resources/js/app.js"]) -->
         <script>
                 var ctx = document.getElementById('barChart').getContext('2d');

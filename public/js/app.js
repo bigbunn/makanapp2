@@ -7,6 +7,9 @@
   \**********************************************/
 /***/ (function(module) {
 
+require('./pages/filepond.js')
+require('./pages/dashboard.js')
+
 (function (global, factory) {
    true ? module.exports = factory() :
   0;
