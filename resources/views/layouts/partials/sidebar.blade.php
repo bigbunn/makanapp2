@@ -20,4 +20,10 @@
         <x-maz-sidebar-sub-item name="Daftar" :link="route('puasa.daftar')"></x-maz-sidebar-sub-item>
         <x-maz-sidebar-sub-item name="Lihat Data" :link="route('puasa.index')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
+    <x-maz-sidebar-item name="Perizinan" icon="bi bi-vacancy">
+        <x-maz-sidebar-sub-item name="Index" :link="route('perizinan.index')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Izin Pesiar" :link="route('perizinan.izinpesiar')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Izin Bermalam" v:link="route('perizinan.izinbermalam')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Izin Keluar" :link="route('perizinan.izinkeluar')"></x-maz-sidebar-sub-item>
+    </x-maz-sidebar-item>
 </x-maz-sidebar>

@@ -63,4 +63,18 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
             return view('puasa.index');
         })->name('index');
     });
+    Route::group(['prefix'=> 'perizinan','as'=> 'perizinan.'], function() {
+        Route::get('/index', function () {
+            return view('perizinan.index');
+        })->name('index');
+        Route::get('/izinbermalam', function () {
+            return view('perizinan.izinbermalam');
+        })->name('izinbermalam');
+        Route::get('/izinpesiar', function () {
+            return view('perizinan.izinpesiar');
+        })->name('izinpesiar');
+        Route::get('/index', function () {
+            return view('perizinan.izinkeluar');
+        })->name('izinkeluar');
+    });
 });
