@@ -3,7 +3,17 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Status Makan Taruna</h3>
-                <p class="text-subtitle text-muted">...</p>
+                <!-- <p class="text-subtitle text-muted">Tahun :  -->
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle me-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Tahun</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item active" href="#">2024</a>
+                            <a class="dropdown-item" href="#">2023</a>
+                            <a class="dropdown-item" href="#">2022</a>
+                        </div>
+                    </div>
+                <!-- </p> -->
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -17,7 +27,7 @@
 
     
     <section class="row">
-        <div class="col-12 col-lg-9">
+        <div class="col-12 col-lg-12">
             <div class="row">
                 
                 <div class="col-6 col-lg-3 col-md-6">
@@ -32,7 +42,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Data Makan</h6>
-                                        <h6 class="font-extrabold mb-0">23/11/2024</h6>
+                                        <h6 class="font-extrabold mb-0">26</h6>
                                     </div>
                                 </div> 
                             </div>
@@ -101,122 +111,161 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="col-12 col-xl-8">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Keluhan</h4>
-                </div>
-                <div class="card-body">
-                    <div style="width: 80%; margin: auto;">
-                        <canvas id="barChart"></canvas>
+    <section class="row">
+        <div class="col-12 col-lg-12">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Keluhan</h4>
+                        </div>
+                        <div class="card-body">
+                            <div style="width: 80%; margin: auto;">
+                                <canvas id="keluhanChart"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        
-    <div class="col-12 col-xl-4">
-        <div class="card">
-            <div class="card-header">
-                <h4>Daftar Taruna Puasa</h4>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-7">
-                        <div class="d-flex align-items-center">
-                            <svg class="bi text-primary" width="32" height="32" fill="blue"
-                                style="width:10px">
-                                <use
-                                    xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
-                            </svg>
-                            <h5 class="mb-0 ms-3">Europe</h5>
+                
+                <div class="col-12 col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Puasa</h4>
                         </div>
-                    </div>
-                    <div class="col-5">
-                        <h5 class="mb-0 text-end">862</h5>
-                    </div>
-                    <div class="col-12">
-                        <div id="chart-europe"></div>
+                        <div class="card-body">
+                            <div style="width: 80%; margin: auto;">
+                                    <canvas id="puasaChart"></canvas>
+                                </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-7">
-                        <div class="d-flex align-items-center">
-                            <svg class="bi text-success" width="32" height="32" fill="blue"
-                                style="width:10px">
-                                <use
-                                    xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
-                            </svg>
-                            <h5 class="mb-0 ms-3">America</h5>
+
+                <div class="col-12 col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Pantangan</h4>
                         </div>
-                    </div>
-                    <div class="col-5">
-                        <h5 class="mb-0 text-end">375</h5>
-                    </div>
-                    <div class="col-12">
-                        <div id="chart-america"></div>
+                        <div class="card-body">
+                            <div style="width: 80%; margin: auto;">
+                                    <canvas id="pantanganChart"></canvas>
+                                </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-7">
-                        <div class="d-flex align-items-center">
-                            <svg class="bi text-success" width="32" height="32" fill="blue"
-                                style="width:10px">
-                                <use
-                                    xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
-                            </svg>
-                            <h5 class="mb-0 ms-3">India</h5>
+                <div class="col-12 col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Perizinan</h4>
                         </div>
-                    </div>
-                    <div class="col-5">
-                        <h5 class="mb-0 text-end">625</h5>
-                    </div>
-                    <div class="col-12">
-                        <div id="chart-india"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-7">
-                        <div class="d-flex align-items-center">
-                            <svg class="bi text-danger" width="32" height="32" fill="blue"
-                                style="width:10px">
-                                <use
-                                    xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
-                            </svg>
-                            <h5 class="mb-0 ms-3">Indonesia</h5>
+                        <div class="card-body">
+                            <div style="width: 80%; margin: auto;">
+                                    <canvas id="perizinanChart"></canvas>
+                                </div>
                         </div>
-                    </div>
-                    <div class="col-5">
-                        <h5 class="mb-0 text-end">1025</h5>
-                    </div>
-                    <div class="col-12">
-                        <div id="chart-indonesia"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </section>
 
     @section('script')
         <!-- CDN -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <!-- <script src="~chart.js/dist/chart.js"></script> -->
         <!-- @vite(["node_modules/chart.js/dist/chart.umd.js"])
         @vite(["node_modules/chart.js/dist/chart.js"]) -->
         <!-- @vite(["resources/js/app.js"]) -->
         <script>
-                var ctx = document.getElementById('barChart').getContext('2d');
+                var ctx = document.getElementById('keluhanChart').getContext('2d');
                 var myChart = new Chart(ctx, {
-                    type: 'bar',
+                    type: 'line',
                     data: {
-                        labels: @json($data['labels']),
+                        labels: @json($dataKeluhan['labels']),
                         datasets: [{
-                            label: 'Data',
-                            data: @json($data['data']),
+                            label: 'Keluhan',
+                            data: @json($dataKeluhan['data']),
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
                             borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+                var ctx2 = document.getElementById('puasaChart').getContext('2d');
+                var puasaChart = new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: @json($dataPuasa['labels']),
+                        datasets: [{
+                            label: 'Puasa',
+                            data: @json($dataPuasa['data']),
+                            backgroundColor: 'rgba(255, 192, 192, 1)',
+                            borderColor: 'rgba(255, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+                var ctx3 = document.getElementById('pantanganChart').getContext('2d');
+                var puasaChart = new Chart(ctx3, {
+                    type: 'bar',
+                    data: {
+                        labels: @json($dataPantangan['labels']),
+                        datasets: [{
+                            label: 'Pantangan',
+                            data: @json($dataPantangan['data']),
+                            backgroundColor: 'rgba(75, 192, 192, 1)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+                var ctx4 = document.getElementById('perizinanChart').getContext('2d');
+                var puasaChart = new Chart(ctx4, {
+                    type: 'line',
+                    data: {
+                        labels: @json($dataPerizinan['labels']),
+                        datasets: [{
+                            label: 'Izin Keluar',
+                            data: @json($dataPerizinan['dataIzinKeluar']),
+                            backgroundColor: 'rgba(75, 192, 192, 1)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },{
+                            label: 'Izin Pesiar',
+                            data: @json($dataPerizinan['dataIzinPesiar']),
+                            backgroundColor: 'rgba(180, 192, 192, 1)',
+                            borderColor: 'rgba(180, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Izin Bermalam',
+                            data: @json($dataPerizinan['dataIzinBermalam']),
+                            backgroundColor: 'rgba(255, 192, 192, 1)',
+                            borderColor: 'rgba(255, 192, 192, 1)',
                             borderWidth: 1
                         }]
                     },
