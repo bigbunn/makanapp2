@@ -11,7 +11,8 @@ require('flatpickr');
 
 import filepond from 'filepond';
 import chart from 'chart.js';
-import flatpickr from 'flatpickr';
+import flatpckr from 'flatpickr';
+window.flatpckr = flatpckr;
 
 // import('~filepond/dist/filepond.js');
 // import('~filepond/dist/filepond.esm.js');

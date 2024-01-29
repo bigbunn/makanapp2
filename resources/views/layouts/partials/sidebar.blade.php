@@ -8,7 +8,7 @@
         <x-maz-sidebar-sub-item name="Lihat Data" :link="route('datamakan.index')"></x-maz-sidebar-sub-item>
         <x-maz-sidebar-sub-item name="Menu Makan" :link="route('datamakan.menu')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
-    <x-maz-sidebar-item name="Pantangan" icon="bi bi-stack">
+    <x-maz-sidebar-item name="Pantangan" icon="bi bi-collection">
         <x-maz-sidebar-sub-item name="Ajukan" :link="route('pantangan.pengajuan')"></x-maz-sidebar-sub-item>
         <x-maz-sidebar-sub-item name="Lihat Data" :link="route('pantangan.index')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
@@ -20,10 +20,10 @@
         <x-maz-sidebar-sub-item name="Daftar" :link="route('puasa.daftar')"></x-maz-sidebar-sub-item>
         <x-maz-sidebar-sub-item name="Lihat Data" :link="route('puasa.index')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
-    <x-maz-sidebar-item name="Perizinan" icon="bi bi-vacancy">
-        <x-maz-sidebar-sub-item name="Index" :link="route('perizinan.index')"></x-maz-sidebar-sub-item>
+    <x-maz-sidebar-item name="Perizinan" icon="bi bi-airplane">
+        <x-maz-sidebar-sub-item name="Index" :link="route('perizinan.all')"></x-maz-sidebar-sub-item>
         <x-maz-sidebar-sub-item name="Izin Pesiar" :link="route('perizinan.izinpesiar')"></x-maz-sidebar-sub-item>
-        <x-maz-sidebar-sub-item name="Izin Bermalam" v:link="route('perizinan.izinbermalam')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Izin Bermalam" :link="route('perizinan.izinbermalam')"></x-maz-sidebar-sub-item>
         <x-maz-sidebar-sub-item name="Izin Keluar" :link="route('perizinan.izinkeluar')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
 </x-maz-sidebar>

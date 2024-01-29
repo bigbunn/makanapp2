@@ -14,7 +14,13 @@ class PerizinanController extends Controller
      */
     public function index()
     {
-        //
+        $dataPerizinan = [
+            'labels'=>['January', 'February', 'March', 'April', 'May'],
+            'dataIzinKeluar'=>[2, 1, 4, 24, 10],
+            'dataIzinPesiar'=>[40, 45, 80, 71, 96],
+            'dataIzinBermalam'=>[20, 25, 20, 11, 36],
+        ];
+        return view('perizinan.index', compact(['dataPerizinan']));
     }
 
     /**

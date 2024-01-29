@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataMakanController;
+use App\Http\Controllers\KeluhanController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PantanganController;
+use App\Http\Controllers\PerizinanController;
+use App\Http\Controllers\PuasaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +26,14 @@ Route::get('/', function () {
 });
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::group(['prefix' => 'components', 'as' => 'components.'], function() {
-        Route::get('/alert', function () {
-            return view('admin.component.alert');
-        })->name('alert');
-        Route::get('/accordion', function () {
-            return view('admin.component.accordion');
-        })->name('accordion');
-    });
+    // Route::group(['prefix' => 'components', 'as' => 'components.'], function() {
+    //     Route::get('/alert', function () {
+    //         return view('admin.component.alert');
+    //     })->name('alert');
+    //     Route::get('/accordion', function () {
+    //         return view('admin.component.accordion');
+    //     })->name('accordion');
+    // });
     Route::group(['prefix'=> 'datamakan','as'=> 'datamakan.'], function() {
         Route::get('/buat', function () {
             return view('datamakan.buat');
@@ -43,30 +49,22 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
         Route::get('/pengajuan', function () {
             return view('pantangan.pengajuan');
         })->name('pengajuan');
-        Route::get('/index', function () {
-            return view('pantangan.index');
-        })->name('index');
+        Route::get('/index', [PantanganController::class,'index'])->name('index');
     });
     Route::group(['prefix'=> 'keluhan','as'=> 'keluhan.'], function() {
         Route::get('/laporan', function () {
             return view('keluhan.laporan');
         })->name('laporan');
-        Route::get('/index', function () {
-            return view('keluhan.index');
-        })->name('index');
+        Route::get('/index', [KeluhanController::class,'index'])->name('index');
     });
     Route::group(['prefix'=> 'puasa','as'=> 'puasa.'], function() {
         Route::get('/daftar', function () {
             return view('puasa.daftar');
         })->name('daftar');
-        Route::get('/index', function () {
-            return view('puasa.index');
-        })->name('index');
+        Route::get('/index', [PuasaController::class,'index'])->name('index');
     });
     Route::group(['prefix'=> 'perizinan','as'=> 'perizinan.'], function() {
-        Route::get('/index', function () {
-            return view('perizinan.index');
-        })->name('index');
+        Route::get('/all', [PerizinanController::class,'index'])->name('all');
         Route::get('/izinbermalam', function () {
             return view('perizinan.izinbermalam');
         })->name('izinbermalam');

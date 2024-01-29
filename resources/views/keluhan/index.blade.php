@@ -17,6 +17,24 @@
 
     
     <section class="section">
+        <div class="page-heading">
+            <section class="section">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-xl-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Statistik Keluhan</h4>
+                            </div>
+                            <div class="card-body justify-content-center">
+                                <div style="width: 80%; margin: auto;">
+                                    <canvas id="keluhanChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </section>
+        </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
@@ -104,6 +122,32 @@
             </div>
         </div>
     </section>
+    @section('script')
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+                var ctx = document.getElementById('keluhanChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: @json($dataKeluhan['labels']),
+                        datasets: [{
+                            label: 'Keluhan',
+                            data: @json($dataKeluhan['data']),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+        </script>
+    @endsection
 </x-app-layout>
 
 

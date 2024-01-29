@@ -20,7 +20,7 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Data Makan</h4>
-                <input type="date" id="flatpickr" class="form-control mb-3 flatpickr-no-config" placeholder="Select date...">
+                <input type="date" id="flatpickr" class="form-control mb-3 flatpickr-no-config" value="2024-01-12">
             </div>
             <div class="card-body">
                 <table class="table  table-striped table-bordered">

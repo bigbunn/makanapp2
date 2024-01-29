@@ -14,7 +14,12 @@ class KeluhanController extends Controller
      */
     public function index()
     {
-        //
+        
+        $dataKeluhan = [
+            'labels' => ['January', 'February', 'March', 'April', 'May'],
+            'data' => [65, 59, 80, 81, 56],
+        ];
+        return view('keluhan.index', compact(['dataKeluhan']));
     }
 
     /**

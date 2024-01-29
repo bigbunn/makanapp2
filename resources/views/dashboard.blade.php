@@ -3,24 +3,13 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last p-2">
                 <h3>Status Makan Taruna</h3>
-                <!-- <p class="text-subtitle text-muted">Tahun :  -->
                     <div class="input-group-prepend py-3">
-                        <select name="" id="inputSelect1" class="custom-select btn btn-primary">
+                        <select name="" id="inputSelect1" class="custom-select btn btn-outline-primary">
                             <option selected value="2024">2024</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                         </select>
                     </div>
-                    <!-- <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle me-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">Tahun</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item active" href="#">2024</a>
-                            <a class="dropdown-item" href="#">2023</a>
-                            <a class="dropdown-item" href="#">2022</a>
-                        </div>
-                    </div> -->
-                <!-- </p> -->
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -126,7 +115,7 @@
                         <div class="card-header">
                             <h4>Keluhan</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body justify-content-center">
                             <div style="width: 80%; margin: auto;">
                                 <canvas id="keluhanChart"></canvas>
                             </div>
@@ -140,7 +129,7 @@
                         <div class="card-header">
                             <h4>Puasa</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body justify-content-center">
                             <div style="width: 80%; margin: auto;">
                                     <canvas id="puasaChart"></canvas>
                                 </div>
@@ -153,7 +142,7 @@
                         <div class="card-header">
                             <h4>Pantangan</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body justify-content-center">
                             <div style="width: 80%; margin: auto;">
                                     <canvas id="pantanganChart"></canvas>
                                 </div>
@@ -165,7 +154,7 @@
                         <div class="card-header">
                             <h4>Perizinan</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body justify-content-center">
                             <div style="width: 80%; margin: auto;">
                                     <canvas id="perizinanChart"></canvas>
                                 </div>

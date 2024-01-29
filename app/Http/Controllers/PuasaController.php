@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pantangan;
+use App\Models\Puasa;
 use Illuminate\Http\Request;
 
-class PantanganController extends Controller
+class PuasaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,11 @@ class PantanganController extends Controller
      */
     public function index()
     {
-
-        $dataPantangan = [
-            'labels'=> ['Udang','Cumi','Bubur','Lainya'],
-            'data'=> [10, 2, 4, 13],
-            ];
-        return view('pantangan.index', compact(['dataPantangan']));
+        $dataPuasa = [
+            'labels' => ['January', 'February', 'March', 'April', 'May'],
+            'data' => [40, 45, 80, 71, 96],
+        ];
+        return view('puasa.index', compact(['dataPuasa']));
     }
 
     /**
@@ -46,10 +45,10 @@ class PantanganController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pantangan  $pantangan
+     * @param  \App\Models\Puasa  $puasa
      * @return \Illuminate\Http\Response
      */
-    public function show(Pantangan $pantangan)
+    public function show(Puasa $puasa)
     {
         //
     }
@@ -57,10 +56,10 @@ class PantanganController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pantangan  $pantangan
+     * @param  \App\Models\Puasa  $puasa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pantangan $pantangan)
+    public function edit(Puasa $puasa)
     {
         //
     }
@@ -69,10 +68,10 @@ class PantanganController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pantangan  $pantangan
+     * @param  \App\Models\Puasa  $puasa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pantangan $pantangan)
+    public function update(Request $request, Puasa $puasa)
     {
         //
     }
@@ -80,10 +79,10 @@ class PantanganController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pantangan  $pantangan
+     * @param  \App\Models\Puasa  $puasa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pantangan $pantangan)
+    public function destroy(Puasa $puasa)
     {
         //
     }
