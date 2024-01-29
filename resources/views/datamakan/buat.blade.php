@@ -23,13 +23,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Data Makan</h4>
-                                <div class="input-group mt-3">
-                                    <!-- <label for="inputDate" class="label">Masukkan Tanggal</label> -->
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Masukkan Tanggal</span>
-                                    </div>
-                                    <input type="date" name="inputDate" id="inputDate"  class="form-control flatpickr-no-config mb-3" placeholder="Select date..">
-                                </div>
+                                
                                 
                             </div>
                             <div class="card-body">
@@ -52,13 +46,13 @@
                                     <tbody>
                                         <tr>
                                             <th>Ruang Makan</th>
-                                            <th class="text-center"><input type="text" class="col-6 p-1" name="" id="" value="1"></th>
-                                            <th class="text-center"><input type="text" class="col-6 p-1" name="" id="" value="1"></th>
-                                            <th class="text-center"><input type="text" class="col-6 p-1" name="" id="" value="1"></th>
-                                            <th class="text-center"><input type="text" class="col-6 p-1" name="" id="" value="1"></th>
-                                            <th class="text-center"><input type="text" class="col-6 p-1" name="" id="" value="1"></th>
-                                            <th class="text-center"><input type="text" class="col-6 p-1" name="" id="" value="1"></th>
-                                            <th class="text-center"><input type="text" class="col-6 p-1" name="" id="" value="1"></th>
+                                            <th class="text-center">1</th>
+                                            <th class="text-center">2</th>
+                                            <th class="text-center">3</th>
+                                            <th class="text-center">4</th>
+                                            <th class="text-center">4</th>
+                                            <th class="text-center">4</th>
+                                            <th class="text-center">5</th>
                                         </tr>
                                         <tr>
                                             <th>Sampataloka</th>
@@ -131,22 +125,156 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Input Data</h4>
-                                <div class="col-2">
-                                    <div class="form-control ">
-                                        <div class="theme-toggle d-flex gap-2  align-items-center justify-content-center mt-2">
-                                            <h6 class="">Puasa</h6>
-                                            <div class="form-check form-switch fs-6">
-                                                <input class="form-check-input me-0" type="checkbox" id="toggle-puasa">
-                                                <label class="form-check-label"></label>
+                                <div class="input-group mt-3">
+                                    <!-- <label for="inputDate" class="label">Masukkan Tanggal</label> -->
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Masukkan Tanggal</span>
+                                    </div>
+                                    <input type="date" name="inputDate" id="inputDate"  class="form-control flatpickr-no-config mb-3" placeholder="Select date..">
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="form-control">
+                                            <div class="theme-toggle d-flex gap-2  align-items-center justify-content-center mt-2">
+                                                <h6 class="">Puasa</h6>
+                                                <div class="form-check form-switch fs-6">
+                                                    <input class="form-check-input me-0" type="checkbox" id="toggle-puasa">
+                                                    <label class="form-check-label"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-control">
+                                            <div class="theme-toggle d-flex gap-2  align-items-center justify-content-center mt-2">
+                                                <h6 class="">Diuangkan</h6>
+                                                <div class="form-check form-switch fs-6">
+                                                    <input class="form-check-input me-0" type="checkbox" id="toggle-puasa">
+                                                    <label class="form-check-label"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-control">
+                                            <div class="theme-toggle d-flex gap-2  align-items-center justify-content-center mt-2">
+                                                <h6 class="">Di dalam box</h6>
+                                                <div class="form-check form-switch fs-6">
+                                                    <input class="form-check-input me-0" type="checkbox" id="toggle-puasa">
+                                                    <label class="form-check-label"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-control">
+                                            <div class="theme-toggle d-flex gap-2  align-items-center justify-content-center mt-2">
+                                                <h6 class="">Keterangan lain</h6>
+                                                <div class="form-check form-switch fs-6">
+                                                    <input class="form-check-input me-0" type="checkbox" id="toggle-puasa">
+                                                    <label class="form-check-label"></label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
+                                
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                     
+                                     <div class="col-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title">Ruang Makan</h5>
+
+                                            </div>
+                                            <div class="card-body">
+                                            <div class="input-group mb-3">
+                                                <label for="sahur" class="input-group-text col-4">Sahur</label>
+                                                <input class="col-8" type="text" name="sahur" id="sahur">
+                                                </div>
+
+                                            <div class="input-group mb-3">
+                                                <label for="pagi" class="input-group-text col-4">Pagi</label>
+                                                <input class="col-8" type="text" name="pagi" id="pagi">
+                                                </div>
+
+
+                                                <div class="input-group mb-3">
+                                                <label for="snackpagi" class="input-group-text col-4">Snack Pagi</label>
+                                                <input class="col-8" type="text" name="snackpagi" id="snackpagi">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                <label for="siang" class="input-group-text col-4">Siang</label>
+                                                <input class="col-8" type="text" name="siang" id="siang">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                <label for="malam" class="input-group-text col-4">Malam</label>
+                                                <input class="col-8" type="text" name="malam" id="malam">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                <label for="snackmalam" class="input-group-text col-4">Snack Malam</label>
+                                                <input class="col-8" type="text" name="snackmalam" id="snackmalam">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                <label for="takjil" class="input-group-text col-4">Takjil</label>
+                                                <input class="col-8" type="text" name="takjil" id="takjil">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                     </div>
+                                     <div class="col-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title">Sampataloka</h5>
+
+                                            </div>
+                                            <div class="card-body">
+                                            <div class="input-group mb-3">
+                                                <label for="sahur" class="input-group-text col-4">Sahur</label>
+                                                <input class="col-8" type="text" name="sahur" id="sahur">
+                                                </div>
+
+                                            <div class="input-group mb-3">
+                                                <label for="pagi" class="input-group-text col-4">Pagi</label>
+                                                <input class="col-8" type="text" name="pagi" id="pagi">
+                                                </div>
+
+
+                                                <div class="input-group mb-3">
+                                                <label for="snackpagi" class="input-group-text col-4">Snack Pagi</label>
+                                                <input class="col-8" type="text" name="snackpagi" id="snackpagi">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                <label for="siang" class="input-group-text col-4">Siang</label>
+                                                <input class="col-8" type="text" name="siang" id="siang">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                <label for="malam" class="input-group-text col-4">Malam</label>
+                                                <input class="col-8" type="text" name="malam" id="malam">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                <label for="snackmalam" class="input-group-text col-4">Snack Malam</label>
+                                                <input class="col-8" type="text" name="snackmalam" id="snackmalam">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                <label for="takjil" class="input-group-text col-4">Takjil</label>
+                                                <input class="col-8" type="text" name="takjil" id="takjil">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                     </div>
                                 </div>
                             
                                 <input type="submit" class="btn btn-primary disabled" value="Submit">
@@ -159,7 +287,7 @@
     </form>
 
     
-    <section class="section">
+    <!-- <section class="section">
         <div>
             <div class="row">
                 <div class="col-12 col-lg-5 col-md-12">
@@ -173,7 +301,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 </x-app-layout>
 
 
