@@ -9,6 +9,7 @@
 
 require('./pages/filepond.js')
 require('./pages/dashboard.js')
+require('./pages/date-picker.js')
 
 (function (global, factory) {
    true ? module.exports = factory() :
