@@ -46,6 +46,13 @@
                         <h5 class="card-title">
                             Daftar Taruna Berpuasa
                         </h5>
+                        <div class="input-group mt-3">
+                            <!-- <label for="inputDate" class="label">Masukkan Tanggal</label> -->
+                            <!-- <div class="input-group-prepend">
+                                <span class="input-group-text">Masukkan Tanggal</span>
+                            </div> -->
+                            <input type="date" id="flatpickr" class="form-control mb-3 flatpickr-no-config" value="2024-01-12">
+                        </div>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped" id="table1">

@@ -12,7 +12,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown me-1">
+                    <!-- <li class="nav-item dropdown me-1">
                         <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <i class='bi bi-envelope bi-sub fs-4 text-gray-600'></i>
@@ -35,10 +35,10 @@
                             </li>
                             <li><a class="dropdown-item">No notification available</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="dropdown">
-                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false" ria-labelledby="dropdownMenuButton">
                         <div class="user-menu d-flex">
                             <div class="user-name text-end me-3">
                                 <h6 class="mb-0 text-gray-600">{{ Auth::user()->name }}</h6>

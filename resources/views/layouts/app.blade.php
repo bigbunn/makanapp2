@@ -7,6 +7,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        
+
         <!-- Styles -->
         @include('layouts.partials.styles')
         @yield('styles')
