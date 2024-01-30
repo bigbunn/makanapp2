@@ -23,6 +23,18 @@ class PerizinanController extends Controller
         return view('perizinan.index', compact(['dataPerizinan']));
     }
 
+    public function izinpesiarindex(){
+        return view('perizinan.izinpesiar');
+    }
+
+    public function izinbermalamindex(){
+        return view('perizinan.izinbermalam');
+    }
+
+    public function izinkeluarindex(){
+        return view('perizinan.izinkeluar');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

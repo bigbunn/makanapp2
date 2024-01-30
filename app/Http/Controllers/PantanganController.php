@@ -22,6 +22,10 @@ class PantanganController extends Controller
         return view('pantangan.index', compact(['dataPantangan']));
     }
 
+    public function pengajuan(){
+        return view ('pantangan.pengajuan');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

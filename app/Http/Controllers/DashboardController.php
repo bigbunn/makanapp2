@@ -28,7 +28,5 @@ class DashboardController extends Controller
         return view('dashboard', compact(['dataKeluhan','dataPuasa','dataPantangan','dataPerizinan']));
     }
 
-    public function indextaruna(){
-        return view('taruna.dashboard');
-    }
+    
 }

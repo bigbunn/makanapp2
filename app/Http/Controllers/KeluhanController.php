@@ -22,6 +22,10 @@ class KeluhanController extends Controller
         return view('keluhan.index', compact(['dataKeluhan']));
     }
 
+    public function laporan(){
+        return view('keluhan.laporan');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

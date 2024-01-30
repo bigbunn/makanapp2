@@ -21,6 +21,10 @@ class PuasaController extends Controller
         return view('puasa.index', compact(['dataPuasa']));
     }
 
+    public function daftar(){
+        return view ('puasa.daftar');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

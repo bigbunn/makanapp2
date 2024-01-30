@@ -12,9 +12,21 @@ class DatamakanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-        //
+        return view("datamakan.index");
+    }
+
+    public function buat()
+    {
+        return view('datamakan.buat');
+    }
+
+    public function menu()
+    {
+        return view("datamakan.menu");
     }
 
     /**
