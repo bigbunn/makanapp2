@@ -26,14 +26,6 @@ Route::get('/', function () {
 });
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    // Route::group(['prefix' => 'components', 'as' => 'components.'], function() {
-    //     Route::get('/alert', function () {
-    //         return view('admin.component.alert');
-    //     })->name('alert');
-    //     Route::get('/accordion', function () {
-    //         return view('admin.component.accordion');
-    //     })->name('accordion');
-    // });
     Route::group(['prefix'=> 'datamakan','as'=> 'datamakan.'], function() {
         Route::get('/buat', function () {
             return view('datamakan.buat');

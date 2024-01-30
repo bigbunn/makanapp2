@@ -46,6 +46,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //inverse one to many ke table role
+    public function role(){
+        return $this->belongsTo(Role::class,'role_id');
+    }
+
     /**
      * The accessors to append to the model's array form.
      *
