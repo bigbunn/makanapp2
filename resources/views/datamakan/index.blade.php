@@ -6,7 +6,7 @@
                 <p class="text-subtitle text-muted">...</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-end float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item active" aria-current="page">Dashboard/Data Makan</li>
                     </ol>
@@ -22,9 +22,9 @@
                 <h4 class="card-title">Data Makan</h4>
                 <input type="date" id="flatpickr" class="form-control mb-3 flatpickr-no-config" value="2024-01-12">
             </div>
-            <div class="card-body">
-                <table class="table  table-striped table-bordered">
-                    <thead class="thead-dark">
+            <div class="card-body table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-primary">
                         <tr>
                             <th rowspan="2" scope="col"><strong>Tujuan</strong></th>
                             <th colspan="7" scope="col" class="text-center"><strong>Waktu Makan</strong></th>
@@ -40,27 +40,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr class="table-info">
                             <th>Ruang Makan</th>
-                            <th class="text-center">1</th>
+                            <th class="text-center table-success">1</th>
                             <th class="text-center">2</th>
                             <th class="text-center">3</th>
                             <th class="text-center">4</th>
                             <th class="text-center">5</th>
                             <th class="text-center">6</th>
-                            <th class="text-center">7</th>
+                            <th class="text-center table-success">7</th>
                         </tr>
-                        <tr>
+                        <tr class="table-info">
                             <th>Sampataloka</th>
-                            <th class="text-center">1</th>
+                            <th class="text-center table-success">1</th>
                             <th class="text-center">2</th>
                             <th class="text-center">3</th>
                             <th class="text-center">4</th>
                             <th class="text-center">5</th>
                             <th class="text-center">6</th>
-                            <th class="text-center">7</th>
+                            <th class="text-center table-success">7</th>
                         </tr>
-                        <tr>
+                        <tr class="table-primary">
                             <th>Total</th>
                             <th class="text-center">2</th>
                             <th class="text-center">4</th>
@@ -73,12 +73,15 @@
                     </tbody>
                     
                 </table>
+                <div class="p-3">
+                    <h6 class="card-title text-center">Data Kondisi Khusus</h6>
+                </div>
                 <table class="table  table-striped table-bordered">
                     <thead class="thead-light text-center">
-                        <tr>
+                        <!-- <tr class="table-danger">
                             <th colspan="3">Data Kondisi Khusus</th>
-                        </tr>
-                        <tr>
+                        </tr> -->
+                        <tr class="table-primary">
                             <th colspan="3">Ruang Makan</th>
                         </tr>
                     </thead>
@@ -95,7 +98,7 @@
                         </tr>
                     </tbody>
                     <thead class="thead-light text-center">
-                        <tr>
+                        <tr class="table-primary">
                             <th colspan="3">Sampataloka</th>
                         </tr>
                     </thead>

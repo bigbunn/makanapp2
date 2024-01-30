@@ -285,9 +285,9 @@ if (sidebarEl) {
 
 // NOTE use this to reinitialize sidebar with recalculate height
 // NOTE fixed dropdown smooth animation
-/* 
+
 const sidebar = new window.Sidebar(document.getElementById("sidebar"), {
   recalculateHeight: true
 }) 
-*/
+
 
