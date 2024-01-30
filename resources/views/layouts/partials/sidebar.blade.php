@@ -1,3 +1,4 @@
+@if(auth()->user()->role_id === 1)
 <x-maz-sidebar :href="route('dashboard')" :logo="asset('images/logo/logo.png')">
 
     <!-- Add Sidebar Menu Items Here -->
@@ -27,3 +28,24 @@
         <x-maz-sidebar-sub-item name="Izin Keluar" :link="route('perizinan.izinkeluar')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
 </x-maz-sidebar>
+
+@else
+<x-maz-sidebar :href="route('dashboard')" :logo="asset('images/logo/logo.png')">
+
+    <!-- Add Sidebar Menu Items Here -->
+
+    <x-maz-sidebar-item name="Dashboard" :link="route('dashboard')" icon="bi bi-grid-fill"></x-maz-sidebar-item>
+    <x-maz-sidebar-item name="Pantangan" :link="route('pantangan.pengajuan')" icon="bi bi-collection"></x-maz-sidebar-item>
+    <x-maz-sidebar-item name="Keluhan" :link="route('keluhan.laporan')" icon="bi bi-info"></x-maz-sidebar-item>
+    <x-maz-sidebar-item name="Puasa" :link="route('puasa.daftar')" icon="bi bi-clock"></x-maz-sidebar-item>
+    <x-maz-sidebar-item name="Perizinan" icon="bi bi-airplane">
+        <x-maz-sidebar-sub-item name="Izin Pesiar" :link="route('perizinan.izinpesiar')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Izin Bermalam" :link="route('perizinan.izinbermalam')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Izin Keluar" :link="route('perizinan.izinkeluar')"></x-maz-sidebar-sub-item>
+    </x-maz-sidebar-item>
+</x-maz-sidebar>
+
+@endif
+
+
+
