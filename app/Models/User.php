@@ -48,8 +48,16 @@ class User extends Authenticatable
 
     //inverse one to many ke table role
     public function role(){
-        return $this->belongsTo(Role::class,'role_id');
+        return $this->belongsTo(Role::class,'role_id')->default(2);
     }
+
+    public function taruna(){
+        return $this->hasOne(Taruna::class);
+    }
+    
+    
+
+    
 
     /**
      * The accessors to append to the model's array form.

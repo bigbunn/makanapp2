@@ -15,8 +15,22 @@ return new class extends Migration
     {
         Schema::create('perizinans', function (Blueprint $table) {
             $table->id();
+            $table->enum('tipeizin',['pesiar','bermalam','keluar']);
+            $table->date('tanggal_mulai');
+            $table->time('jam_mulai');
+            $table->date('tanggal_selesai');
+            $table->time('jam_selesai');
+            $table->string('alamat_tujuan');
+            $table->string('alasan');
+            $table->boolean('isApproved');
+            $table->boolean('isDiuangkan');
+            $table->boolean('isDikurangi');
+            $table->boolean('isDibox');
+            $table->boolean('isDone');
             $table->timestamps();
         });
+
+        
     }
 
     /**

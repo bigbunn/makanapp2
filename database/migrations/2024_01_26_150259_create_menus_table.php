@@ -15,8 +15,18 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
+            $table->enum('waktu_makan',['pagi','siang','malam']);
+            $table->string('nasi');
+            $table->string('lauk_satu');
+            $table->string('lauk_dua');
+            $table->string('sayur');
+            $table->string('buah');
+            $table->string('komplemen')->nullable();
             $table->timestamps();
         });
+
+        
     }
 
     /**

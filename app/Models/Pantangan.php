@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pantangan extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['user_id','tanggal_mulai','lauk_pantangan','keterangan_pantangan','isApproved'];
 }

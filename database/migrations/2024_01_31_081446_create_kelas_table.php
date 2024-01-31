@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pantangans', function (Blueprint $table) {
+        Schema::create('kelas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->date('tanggal_mulai');
-            $table->enum('lauk_pantangan',['udang','cumi','ikan','seafood','daging','ayam','telur','gorengan','kerupuk','keripik','lainnya']);
-            $table->string('keterangan_pantangan');
-            $table->boolean('isApproved');
+            $table->string('nama_kelas');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pantangans');
+        Schema::dropIfExists('kelas');
     }
 };

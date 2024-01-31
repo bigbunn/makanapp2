@@ -15,8 +15,16 @@ return new class extends Migration
     {
         Schema::create('tarunas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('npm')->nullable();
+            $table->unsignedBigInteger('kelas_id')->nullable();
+            $table->unsignedBigInteger('unit_id')->nullable();
+            $table->string('nomor_kamar')->nullable();
+            $table->enum('jenis_kelamin',['laki-laki','perempuan'])->nullable();
             $table->timestamps();
         });
+
+        
     }
 
     /**
