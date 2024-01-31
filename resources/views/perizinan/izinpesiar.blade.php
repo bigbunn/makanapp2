@@ -20,7 +20,6 @@
         <div class="card">
             <div class="card-header">
                 <h6 class="card-title">Daftar Izin Pesiar</h6>
-                <!-- <h6 class="card-description">22/10/2024</h6> -->
                 
             </div>
             <div class="card-body row">
