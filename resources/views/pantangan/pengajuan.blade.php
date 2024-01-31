@@ -24,6 +24,10 @@
             <div class="card-body">
                 <form action="" method="post">
                     <div class="form-group">
+                        <label for="tanggal">Tanggal Mulai Pantangan</label>
+                        <input name="tanggal" type="date" id="flatpickr" class="form-control mb-3 flatpickr-no-config" required>
+                    </div>
+                    <div class="form-group">
                         <label for="deskripsikeluhan">Deskripsi Pantangan</label>
                         <textarea type="text" class="form-control" name="deskripsikeluhan" id="deskripsikeluhan" required></textarea>
                     </div>
