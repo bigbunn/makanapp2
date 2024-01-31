@@ -19,7 +19,7 @@ class TarunaSeeder extends Seeder
         Taruna::create([
             'user_id'=>'2',
             'npm' => '2019101638',
-            'kelas_id' => '5',
+            'kelas_id' => '4',
             'unit_id' => '3',
             'nomor_kamar' => 'B506',
             'jenis_kelamin' => 'laki-laki'

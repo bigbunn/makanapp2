@@ -25,8 +25,8 @@
                 </div>
                 <div class="col-8 col-md-6 col-sm-12 justify-content-start mt-2">
                     <h6 class="card-title">{{ auth()->user()->name }}</h6>
-                    <p class="card-description">2019101638</p>
-                    <p class="card-description">4 Rekayasa Perangkat Lunak Kripto</p>
+                    
+
                     </div>
                 </div>
             </div>

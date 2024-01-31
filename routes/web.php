@@ -26,7 +26,9 @@ use App\Http\Controllers\TarunaController;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
+    
 });
+Route::post('/identity',[TarunaController::class,'create'])->name('identity');
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/dashboard', [RedirectController::class, 'cek'])->name('dashboard');
     Route::middleware('checkrole:1')->get('/admin', [DashboardController::class, 'index'])->name('admin');
