@@ -26,7 +26,7 @@
 
                     <div class="form-group">
                         <label for="tanggal">Tanggal Keluhan</label>
-                        <input name="formtanggal" type="date" id="flatpickr form-tanggal" onchange="updatewaktu()" class="form-control mb-3 flatpickr-no-config" required>
+                        <input name="formtanggal" type="date" id="form-tanggal" onchange="updatewaktu()" class="form-control mb-3 flatpickr-no-config" required>
                     </div>
                     <div class="form-group">
                         <label for="waktumakan">Waktu Makan</label>
@@ -146,20 +146,31 @@
 
     @section('script')
     <script>
-        var datamenu = <?php echo json_encode($datamenu); ?>;
+        var datamenu = @json($datamenu);
 
         function updatewaktu(){
-            var tanggalInput = document.getElementById('formtanggal');
+            var tanggalInput = document.getElementById('form-tanggal');
             var waktumakanselect = document.getElementById('waktumakan');
 
             waktumakanselect.innerHTML='';
-            var waktuMakanOptions = getUniqueOptions(datamenu, 'waktu_makan', 'tanggal', tanggalInput.value);
-            if(tanggalValue){
-                waktuMakanOptions.forEach(function(option) {
-                    addOption(waktumakanselect, option, option);
-                });
-            }
+            tanggalValue = tanggalInput.value;
+            // addOption(waktumakanselect,datamenu.tanggal,datamenu.tanggal);
+            // var waktuMakanOptions = getUniqueOptions(datamenu, 'waktu_makan', 'tanggal', tanggalInput.value);
+            
+            // waktuMakanOptions.forEach(function(option) {
+            //     addOption(waktumakanselect, option, option);
+            // });
 
+            // datamenu.forEach(function(item){
+            //     addoption(waktumakanselect,'1','1');
+            //     if(item[tanggal]==tanggalValue){
+            //         addoption(waktumakanselect,item[waktu_makan],item[waktu_makan]);
+            //     }
+            // });
+
+            var datatanggal = @json($datamenu[0]->tanggal);
+            addoption(waktumakanselect,@json($datamenu[0]->tanggal),@json($datamenu[0]->tanggal));
+            
             updateMenu()
         }
 
