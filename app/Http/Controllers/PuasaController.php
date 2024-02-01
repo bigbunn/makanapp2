@@ -73,7 +73,7 @@ class PuasaController extends Controller
                 'tanggal_puasa'=>$request->tanggal,
             ]);
         }
-        return redirect('puasa.daftar');
+        return redirect('puasa/daftar');
     }
 
     /**
@@ -125,7 +125,7 @@ class PuasaController extends Controller
     {
         $puasa = Puasa::find($id);
         $puasa->delete();
-        return redirect("puasa.daftar");
+        return redirect("puasa/daftar");
     }
 
 

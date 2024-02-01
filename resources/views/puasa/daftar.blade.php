@@ -84,7 +84,7 @@
                                         <td>{{ $dp['unit_taruna']  }}</td>
                                         <td>{{ $dp['kelas_taruna'] }}</td>
                                         <td>{{ $dp['asrama_taruna']}}</td>
-                                        @if(new Datetime($dp['tanggal_puasa'])<= new Datetime())
+                                        @if(new Datetime($dp['tanggal_puasa'])>= new Datetime())
                                             <td><a href="/puasa/hapus/{{$dp['puasa_id']}}"><button type="button" class="btn btn-danger"><i class="bi bi-dash"></button></a></td>
                                         @endif
                                     </tr>

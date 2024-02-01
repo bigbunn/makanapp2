@@ -16,7 +16,7 @@
     </x-slot>
 
     
-    <section class="section">
+    <section class="section collapse" id="collapselaporan">
         <div class="card">
             <div class="card-header">
                 <h6 class="card-title">Laporan</h6>
@@ -26,11 +26,11 @@
 
                     <div class="form-group">
                         <label for="tanggal">Tanggal Keluhan</label>
-                        <input name="formtanggal" type="date" id="form-tanggal" onchange="updatewaktu()" class="form-control mb-3 flatpickr-no-config" required>
+                        <input name="formtanggal" type="date" id="form-tanggal" class="form-control mb-3 flatpickr-no-config" required>
                     </div>
                     <div class="form-group">
                         <label for="waktumakan">Waktu Makan</label>
-                        <select name="waktumakan" id="waktumakan" class="form-select" onchange="updatemenu()" required>
+                        <select name="waktumakan" id="waktumakan" class="form-select" required>
                             
                             <option selected disabled>Choose...</option>
 
@@ -41,18 +41,18 @@
                         <select name="menumakanselect" id="menumakanselect" class="form-select" required>
                             
                             <option selected disabled>Choose...</option>
-                            <option value="pagi">Nasi (Putih)</option>
+                            <!-- <option value="pagi">Nasi (Putih)</option>
                             <option value="siang">Lauk utama (ayam)</option>
                             <option value="malam">Lauk pendamping (tempe)</option>
                             <option value="malam">Sayur (sop)</option>
                             <option value="malam">Buah (semangka)</option>
                             <option value="malam" data-bs-toggle="collapse" data-bs-target="#menulainnya" aria-expanded="false" aria-controls="menulainnya">Lainnya...</option>
-                        </select>
-                    </div>
+                        </select> -->
+                    <!-- </div>
                     <div class="form-group collapse" id="menulainnya" name="menulainnya">
                         <label for="deskripsikeluhan">Keterangan</label>
                         <input type="text" class="form-control" name="keteranganmenulainnya" id="keteranganmenulainnya" required>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="deskripsikeluhan">Deskripsi Keluhan</label>
                         <textarea type="text" class="form-control" name="deskripsikeluhan" id="deskripsikeluhan" required></textarea>
@@ -69,7 +69,7 @@
             <div class="row">
                 @foreach($datamenu as $menu)
                     <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                        <a data-bs-toggle="modal" data-bs-target="#keluhanForm">
+                        <a href="" data-bs-toggle="collapse" data-bs-target="#collapselaporan" onclick='updateform({{$menu->id}})'>
                             <div class="card hover">
                                 <div class="card-header justify-content-center">
                                     <h6 class="font-extrabold">{{ $menu->tanggal}}</h6>
@@ -87,7 +87,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="modal fade text-left" id="keluhanForm" tabindex="-1" role="dialog"
+                            <!-- <div class="modal fade text-left" id="keluhanForm" tabindex="-1" role="dialog"
                                 aria-labelledby="myModalLabel33" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
                                     role="document">
@@ -135,7 +135,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </a>
                     </div>
                 @endforeach
@@ -147,6 +147,14 @@
     @section('script')
     <script>
         var datamenu = @json($datamenu);
+
+        function updateform($menu_id){
+            var tanggalInput = document.getElementById('form-tanggal');
+            var waktumakanselect = document.getElementById('waktumakan');
+            var menumakanselect = document.getElementById('menumakanselect');
+        }
+
+        
 
         function updatewaktu(){
             var tanggalInput = document.getElementById('form-tanggal');
