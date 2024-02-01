@@ -24,8 +24,10 @@
                     </div>
                 </div>
                 <div class="col-8 col-md-6 col-sm-12 justify-content-start mt-2">
-                    <h6 class="card-title">{{ auth()->user()->name }}</h6>
-                    
+                    <h6 class="card-title mb-5">{{ auth()->user()->name }}</h6>
+                    <p class="card-description">{{ $taruna[0]->npm}}</p>
+                    <p class="card-description">{{ $kelas_taruna[0]->nama_kelas}}</p>
+                    <p class="card-description">{{ $unit_taruna[0]->nama_unit}}</p>
 
                     </div>
                 </div>
@@ -52,7 +54,13 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Pantangan</h6>
-                                        <h6 class="font-extrabold mb-0">Tidak ada</h6>
+                                        <h6 class="font-extrabold mb-0">
+                                            @if(isset($pantangan_taruna[0]))
+                                                {{$pantangan_taruna.length()}}
+                                            @else
+                                                Tidak ada
+                                            @endif
+                                        </h6>
                                     </div>
                                 </div> 
                             </div>
@@ -91,7 +99,13 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Keluhan</h6>
-                                        <h6 class="font-extrabold mb-0">12</h6>
+                                        <h6 class="font-extrabold mb-0">
+                                            @if(isset($keluhan_taruna[0]))
+                                                {{$keluhan_taruna.length()}}
+                                            @else
+                                                Tidak ada
+                                            @endif
+                                        </h6>
                                     </div>
                                 </div>
                             </div>

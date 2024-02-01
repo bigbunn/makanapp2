@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Taruna;
 use App\Models\Kelas;
 use App\Models\Unit;
+use App\Models\Pantangan;
+use App\Models\Keluhan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,10 +22,18 @@ class TarunaController extends Controller
         $user_id = Auth()->user()->id;
         $taruna = Taruna::where('user_id',$user_id)->get();
         if(isset($taruna[0])){
-            // $kelas_taruna= Kelas::where('id',$taruna[0]->kelas_id)->get();
-            // $unit_taruna= DB::table("unit")->where('id',$taruna->unit_id)->get();
-            // return view('taruna.dashboard', ['taruna'=>$taruna,'kelas_taruna'=>$kelas_taruna]);
-            return view('taruna.dashboard', ['taruna'=>$taruna,]);
+            $kelas_taruna= Kelas::where('id',$taruna[0]->kelas_id)->get();
+            $unit_taruna= Unit::where('id',$taruna[0]->unit_id)->get();
+
+            $pantangan_taruna = Pantangan::where('user_id',$user_id)->get();
+            $keluhan_taruna = Keluhan::where('user_id',$user_id)->get();
+            return view('taruna.dashboard', [
+                'taruna'=>$taruna,
+                'kelas_taruna'=>$kelas_taruna,
+                'unit_taruna'=>$unit_taruna,
+                'pantangan_taruna'=>$pantangan_taruna,
+                'keluhan_taruna'=>$keluhan_taruna
+            ]);
         }
         else{
             $kelas = Kelas::all();
@@ -42,22 +52,22 @@ class TarunaController extends Controller
     {
         $this->validate($request,[
             'npm' => 'required',
-            'kelas_id' => 'required',
-            'unit_id'=>'required',
+            'kelas' => 'required',
+            'unit'=>'required',
             'asrama' => 'required',
             'jenis_kelamin'=>'required'
         ]);
 
         Taruna::create([
-            'user_id'=>auth()->user()->id,
+            'user_id'=>Auth()->user()->id,
             'npm'=>$request->npm,
-            'kelas_id'=>$request->kelas_id,
-            'unit_id'=>$request->unit_id,
+            'kelas_id'=>$request->kelas,
+            'unit_id'=>$request->unit,
             'asrama'=>$request->asrama,
             'jenis_kelamin'=>$request->jenis_kelamin
         ]);
 
-        return view("tes");
+        return redirect("/dashboard");
     }
 
     /**
