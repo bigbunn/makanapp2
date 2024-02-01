@@ -5,8 +5,8 @@
 ## Installation
 1. Clone this project
     ```bash
-    git clone https://github.com/zuramai/laravel-mazer
-    cd laravel-mazer
+    git clone https://github.com/bigbunn/makanapp2
+    cd makanapp2
     ```
 2. Install dependencies
     ```bash
