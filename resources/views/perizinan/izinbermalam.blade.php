@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="col-9 col-md-9 col-sm-12">
-                    <form action="" method="post" class="form" id="collapseBermalam">
+                    <form action="" method="post" class="form collapse" id="collapseBermalam">
                         <div class="form-group">
                             <label for="tanggal">Tanggal Izin Bermalam</label>
                             <input name="tanggal" type="date" id="flatpickr-range" class="form-control mb-3 flatpickr-range" required>

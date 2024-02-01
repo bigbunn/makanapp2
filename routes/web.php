@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::group(['middleware' => 'checkrole:1','prefix'=> 'datamakan','as'=> 'datamakan.'], function() {
         Route::get('/buat', [DataMakanController::class,'buat'])->name('buat');
         Route::get('/index', [DataMakanController::class,'index'])->name('index');
-        Route::get('/menu', [DataMakanController::class,'menu'])->name('menu');
+        Route::get('/menu', [MenuController::class,'index'])->name('menu');
     });
     Route::group(['prefix'=> 'pantangan','as'=> 'pantangan.'], function() {
         Route::get('/pengajuan',[PantanganController::class,'pengajuan'])->name('pengajuan');
@@ -44,10 +44,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     });
     Route::group(['prefix'=> 'keluhan','as'=> 'keluhan.'], function() {
         Route::get('/laporan', [KeluhanController::class,'laporan'])->name('laporan');
+        Route::get('/create', [KeluhanController::class,'create'])->name('create');
         Route::middleware('checkrole:1')->get('/index', [KeluhanController::class,'index'])->name('index');
     });
     Route::group(['prefix'=> 'puasa','as'=> 'puasa.'], function() {
         Route::get('/daftar', [PuasaController::class,'daftar'])->name('daftar');
+        Route::post('/create',[PuasaController::class,'create'])->name('create');
+        Route::get('/hapus/{id}',[PuasaController::class,'delete'])->name('hapus');
         Route::middleware('checkrole:1')->get('/index', [PuasaController::class,'index'])->name('index');
     });
     Route::group(['prefix'=> 'perizinan','as'=> 'perizinan.'], function() {

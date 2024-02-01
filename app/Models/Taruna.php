@@ -13,5 +13,5 @@ class Taruna extends Model
         return $this->belongsTo(User::class,'user_id');
     }
 
-    protected $fillable = ['user_id','npm','kelas_id','unit_id','nomor_kamar','jenis_kelamin'];
+    protected $fillable = ['user_id','nama_lengkap','npm','kelas_id','unit_id','nomor_kamar','jenis_kelamin'];
 }

@@ -14,7 +14,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $datamenu = Menu::all();
+        return view("datamakan.menu",['datamenu'=>$datamenu]);
     }
 
     /**

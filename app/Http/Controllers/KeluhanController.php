@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keluhan;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class KeluhanController extends Controller
@@ -23,7 +24,8 @@ class KeluhanController extends Controller
     }
 
     public function laporan(){
-        return view('keluhan.laporan');
+        $datamenu = Menu::all();
+        return view("keluhan.laporan",['datamenu'=>$datamenu]);
     }
 
     /**
@@ -31,9 +33,22 @@ class KeluhanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $this->validate($request,[
+            'menu_id'=>'required',
+            'menukeluhan'=>'required',
+            'deskripsikeluhan'=>'required',
+        ]);
+
+        Keluhan::create([
+            'user_id'=>Auth()->user()->id,
+            'menu_id'=>$request->menu_id,
+            'menu_type'=>$request->menukeluhan,
+            'keterangankeluhan'=>$request->deskripsikeluhan
+        ]);
+
+        return redirect('keluhan/laporan');
     }
 
     /**

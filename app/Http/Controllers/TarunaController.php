@@ -7,6 +7,8 @@ use App\Models\Kelas;
 use App\Models\Unit;
 use App\Models\Pantangan;
 use App\Models\Keluhan;
+use App\Models\Puasa;
+use App\Models\Perizinan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,12 +29,16 @@ class TarunaController extends Controller
 
             $pantangan_taruna = Pantangan::where('user_id',$user_id)->get();
             $keluhan_taruna = Keluhan::where('user_id',$user_id)->get();
+            $perizinan_taruna = Perizinan::where('user_id',$user_id)->get();
+            $puasa_taruna = Puasa::where('user_id',$user_id)->get();
             return view('taruna.dashboard', [
                 'taruna'=>$taruna,
                 'kelas_taruna'=>$kelas_taruna,
                 'unit_taruna'=>$unit_taruna,
                 'pantangan_taruna'=>$pantangan_taruna,
-                'keluhan_taruna'=>$keluhan_taruna
+                'keluhan_taruna'=>$keluhan_taruna,
+                'perizinan_taruna'=>$perizinan_taruna,
+                'puasa_taruna'=>$puasa_taruna
             ]);
         }
         else{
@@ -60,6 +66,7 @@ class TarunaController extends Controller
 
         Taruna::create([
             'user_id'=>Auth()->user()->id,
+            'nama_lengkap'=>Auth()->user()->name,
             'npm'=>$request->npm,
             'kelas_id'=>$request->kelas,
             'unit_id'=>$request->unit,

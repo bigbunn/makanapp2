@@ -24,11 +24,6 @@ class DatamakanController extends Controller
         return view('datamakan.buat');
     }
 
-    public function menu()
-    {
-        return view("datamakan.menu");
-    }
-
     /**
      * Show the form for creating a new resource.
      *

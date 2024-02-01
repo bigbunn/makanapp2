@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('menu_id');
+            $table->string('menu_type');
             $table->string('keterangan_keluhan');
             $table->timestamps();
         });

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             KelasSeeder::class,
             UnitSeeder::class,
             TarunaSeeder::class,
+            MenuSeeder::class,
 
         ]);
     }

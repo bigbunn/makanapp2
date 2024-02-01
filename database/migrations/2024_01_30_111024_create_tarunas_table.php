@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tarunas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string("nama_lengkap");
             $table->string('npm')->nullable();
             $table->unsignedBigInteger('kelas_id')->nullable();
             $table->unsignedBigInteger('unit_id')->nullable();

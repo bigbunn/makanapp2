@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('perizinans', function (Blueprint $table) {
             $table->id();
+            $table->UnsignedBigInteger('user_id');
             $table->enum('tipeizin',['pesiar','bermalam','keluar']);
             $table->date('tanggal_mulai');
             $table->time('jam_mulai');

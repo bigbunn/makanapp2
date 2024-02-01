@@ -18,6 +18,7 @@ class TarunaSeeder extends Seeder
 
         Taruna::create([
             'user_id'=>'2',
+            'nama_lengkap'=>'Muhammad Syaibani Al Hakim',
             'npm' => '2019101638',
             'kelas_id' => '4',
             'unit_id' => '3',

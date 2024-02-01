@@ -91,182 +91,27 @@
     <section class="section my-3">
         <div class="col-12">
             <div class="row">
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
+                @foreach($datamenu as $menu)
+                    <div class="col-12 col-lg-2 col-md-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-header justify-content-center">
+                                <h6 class="font-extrabold">{{ $menu->tanggal}}</h6>
+                                <h6 class="font-extrabold">Makan {{ $menu->waktu_makan}}</h6>
+                            </div>
+                            <div class="card-body">
+                                <table>
+                                    
+                                    <tr><th>{{$menu->nasi}}</th></tr>
+                                    <tr><th>{{$menu->lauk_satu}}</th></tr>
+                                    <tr><th>{{$menu->lauk_dua}}</th></tr>
+                                    <tr><th>{{$menu->sayur}}</th></tr>
+                                    <tr><th>{{$menu->buah}}</th></tr>
+                                    <tr><th>{{$menu->komplemen}}</th></tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2 col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h6 class="font-extrabold">01/12/2024</h6>
-                        </div>
-                        <div class="card-body">
-                            <table>
-                                <tr><th>Nasi putih</th></tr>
-                                <tr><th>Ayam kremes</th></tr>
-                                <tr><th>Capcay</th></tr>
-                                <tr><th>Tahu Goreng</th></tr>
-                                <tr><th>Buah</th></tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
                 
             </div>
         </div>

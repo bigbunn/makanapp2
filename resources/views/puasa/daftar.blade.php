@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Pendaftaran Puasa</h3>
-                <p class="text-subtitle text-muted">...</p>
+                <!-- <p class="text-subtitle text-muted">...</p> -->
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-end float-lg-end">
@@ -35,10 +35,21 @@
                     </div>
                 </div>
                 <div class="col-9 col-md-9 col-sm-12">
-                    <form action="" method="post" class="form collapse" id="collapsePuasa">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        {{ $errors->first() }}
+                    </div>
+                    @endif
+                    <form action="{{route('puasa.create')}}" method="post" class="form collapse" id="collapsePuasa">
+                        @csrf
                         <div class="form-group">
                             <label for="tanggal">Tanggal Puasa</label>
                             <input name="tanggal" type="date" id="flatpickr" class="form-control mb-3 flatpickr-no-config" required>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-2 ">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -55,36 +66,35 @@
                     <h6 class="card-description">22/10/2024</h6>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped" id="table1">
-                        <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Unit</th>
-                                <th>Kelas</th>
-                                <th>Asrama</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Graiden</td>
-                                <td>Unit C Satria</td>
-                                <td>4 RPLK</td>
-                                <td>A</td>
-                            </tr>
-                            <tr>
-                                <td>Dale</td>
-                                <td>Unit D Satria</td>
-                                <td>4 RKS Red</td>
-                                <td>F</td>
-                            </tr>
-                            <tr>
-                                <td>Nathaniel</td>
-                                <td>Unit A Madya</td>
-                                <td>3 RPK</td>
-                                <td>C</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    @if(isset($datapuasa))
+                        <table class="table table-striped" id="table1">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Unit</th>
+                                    <th>Kelas</th>
+                                    <th>Asrama</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($datapuasa as $dp)
+                                    <tr>
+                                        <td>{{ $dp['nama_taruna'] }}</td>
+                                        <td>{{ $dp['unit_taruna']  }}</td>
+                                        <td>{{ $dp['kelas_taruna'] }}</td>
+                                        <td>{{ $dp['asrama_taruna']}}</td>
+                                        @if(new Datetime($dp['tanggal_puasa'])<= new Datetime())
+                                            <td><a href="/puasa/hapus/{{$dp['puasa_id']}}"><button type="button" class="btn btn-danger"><i class="bi bi-dash"></button></a></td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                                
+                            </tbody>
+                        </table>
+                    @else
+                        No entry
+                    @endif
                 </div>
             </div>
         </div>

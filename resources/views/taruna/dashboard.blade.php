@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-8 col-md-6 col-sm-12 justify-content-start mt-2">
-                    <h6 class="card-title mb-5">{{ auth()->user()->name }}</h6>
+                    <h6 class="card-title mb-5">{{ $taruna[0]->nama_lengkap }}</h6>
                     <p class="card-description">{{ $taruna[0]->npm}}</p>
                     <p class="card-description">{{ $kelas_taruna[0]->nama_kelas}}</p>
                     <p class="card-description">{{ $unit_taruna[0]->nama_unit}}</p>
@@ -56,7 +56,7 @@
                                         <h6 class="text-muted font-semibold">Pantangan</h6>
                                         <h6 class="font-extrabold mb-0">
                                             @if(isset($pantangan_taruna[0]))
-                                                {{$pantangan_taruna.length()}}
+                                                {{ count($pantangan_taruna) }}
                                             @else
                                                 Tidak ada
                                             @endif
@@ -80,7 +80,13 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Puasa</h6>
-                                        <h6 class="font-extrabold mb-0">23/11/2024</h6>
+                                        <h6 class="font-extrabold mb-0">
+                                            @if(isset($puasa_taruna[0]))
+                                                {{ count($puasa_taruna) }}
+                                            @else
+                                                Tidak ada
+                                            @endif
+                                        </h6>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +107,7 @@
                                         <h6 class="text-muted font-semibold">Keluhan</h6>
                                         <h6 class="font-extrabold mb-0">
                                             @if(isset($keluhan_taruna[0]))
-                                                {{$keluhan_taruna.length()}}
+                                                {{ count($keluhan_taruna) }}
                                             @else
                                                 Tidak ada
                                             @endif
@@ -124,7 +130,13 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Perizinan</h6>
-                                        <h6 class="font-extrabold mb-0">Belum ada</h6>
+                                        <h6 class="font-extrabold mb-0">
+                                            @if(isset($perizinan_taruna[0]))
+                                                {{count($keluhan_taruna)}}
+                                            @else
+                                                Tidak ada
+                                            @endif
+                                        </h6>
                                     </div>
                                 </div>
                             </div>
@@ -134,8 +146,6 @@
             </div>
         </div>
     </section>
-
-    
 </x-app-layout>
 
 

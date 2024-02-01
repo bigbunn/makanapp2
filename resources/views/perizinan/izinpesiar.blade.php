@@ -49,7 +49,7 @@
                             <input name="alasan" type="text" class="form-control mb-3" required>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
-                            <h6 class="">Makan siang</h6>
+                            <h6 class="">Kurangi makan siang</h6>
                             <div class="form-check form-switch fs-6">
                                 <input class="form-check-input me-0" type="checkbox">
                             </div>

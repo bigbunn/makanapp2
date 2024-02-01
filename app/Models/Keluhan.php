@@ -9,5 +9,5 @@ class Keluhan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','menu_id','keterangan_keluhan'];
+    protected $fillable = ['user_id','menu_id','menu_type','keterangan_keluhan'];
 }
