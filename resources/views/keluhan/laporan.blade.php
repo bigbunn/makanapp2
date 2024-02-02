@@ -22,7 +22,33 @@
                 <h6 class="card-title">Keluhan Saya</h6>
             </div>
             <div class="card-body">
-                
+                <div class="table-responsive">
+                    <table class="table table-hover table-lg">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Waktu Makan</th>
+                                <th>Menu</th>
+                                <th>Deskripsi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($datakeluhan as $dk)
+                                @foreach($datamenu as $dm)
+                                    @if($dm->id==$dk->menu_id)
+                                        <tr>
+                                            <th>{{$dm->tanggal}}</th>
+                                            <th>{{$dm->waktu_makan}}</th>
+                                            <th>{{$dk->menu_type}}</th>
+                                            <th>{{$dk->keterangan_keluhan}}</th>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                                
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>

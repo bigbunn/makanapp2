@@ -18,7 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->date('tanggal_mulai');
             $table->enum('lauk_pantangan',['udang','cumi','ikan','seafood','daging','ayam','telur','gorengan','kerupuk','keripik','lainnya']);
-            $table->string('keterangan_pantangan');
+            $table->string('pantangan_lainnya')->nullable();
+            $table->string('keterangan_pantangan')->nullable();
             $table->boolean('isApproved');
             $table->boolean('isDone');
             $table->timestamps();

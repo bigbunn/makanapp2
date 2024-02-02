@@ -1,9 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
+            <div class="col-12 col-md-6 order-md-1 order-last mb-3">
                 <h3>Pengajuan Pantangan</h3>
                 <p class="text-subtitle text-muted">...</p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapsePantanganSaya">Pantangan Saya</button>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-end float-lg-end">
@@ -14,6 +15,28 @@
             </div>
         </div>
     </x-slot>
+
+    <section class="section collapse" id="collapsePantanganSaya">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="card-title">Pantangan Saya</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-lg">
+                        <thead>
+                            <tr>
+                                <th>Tanggal Pengajuan</th>
+                                <th>Pantangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
     
     <section class="section">
@@ -28,8 +51,29 @@
                         <input name="tanggal" type="date" id="flatpickr" class="form-control mb-3 flatpickr-no-config" required>
                     </div>
                     <div class="form-group">
-                        <label for="deskripsikeluhan">Deskripsi Pantangan</label>
-                        <textarea type="text" class="form-control" name="deskripsikeluhan" id="deskripsikeluhan" required></textarea>
+                        <label for="tanggal">Lauk pantangan</label>
+                        <select name="laukpantangan" id="laukpantangan" class="form-select form-control mb-3">
+                            <option selected disabled value="">Choose...</option>    
+                            <option value="udang">Udang</option>
+                            <option value="cumi">Cumi</option>
+                            <option value="ikan">Ikan</option>
+                            <option value="seafood">Seafood</option>
+                            <option value="daging">Daging</option>
+                            <option value="ayam">Ayam</option>
+                            <option value="telur">Telur</option>
+                            <option value="gorengan">Gorengan</option>
+                            <option value="kerupuk">Kerupuk</option>
+                            <option value="keripik">Keripik</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pantangan_lainnya">Pantangan Lainnya</label>
+                        <input type="text" class="form-control" name="pantangan_lainnya" id="pantangan_lainnya" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="keterangan_pantangan">Keterangan Pantangan</label>
+                        <textarea type="text" class="form-control" name="keterangan_pantangan" id="keterangan_pantangan" required></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

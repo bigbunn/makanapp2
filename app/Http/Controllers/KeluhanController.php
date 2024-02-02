@@ -25,7 +25,8 @@ class KeluhanController extends Controller
 
     public function laporan(){
         $datamenu = Menu::all();
-        $datakeluhan = Keluhan::where(['user_id',Auth()->user()->id]);
+        // $datakeluhan = Keluhan::where(['user_id',Auth()->user()->id])->get();
+        $datakeluhan = Keluhan::all();
         return view("keluhan.laporan",['datamenu'=>$datamenu,'datakeluhan'=>$datakeluhan]);
     }
 
