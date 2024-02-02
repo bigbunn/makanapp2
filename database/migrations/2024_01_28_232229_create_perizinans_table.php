@@ -16,18 +16,18 @@ return new class extends Migration
         Schema::create('perizinans', function (Blueprint $table) {
             $table->id();
             $table->UnsignedBigInteger('user_id');
-            $table->enum('tipeizin',['pesiar','bermalam','keluar']);
+            $table->enum('tipe_izin',['pesiar','bermalam','keluar']);
             $table->date('tanggal_mulai');
             $table->time('jam_mulai');
             $table->date('tanggal_selesai');
             $table->time('jam_selesai');
-            $table->string('alamat_tujuan');
+            $table->string('alamat');
             $table->string('alasan');
-            $table->boolean('isApproved');
-            $table->boolean('isDiuangkan');
-            $table->boolean('isDikurangi');
-            $table->boolean('isDibox');
-            $table->boolean('isDone');
+            $table->boolean('isApproved')->default(false);
+            $table->boolean('isDiuangkan')->default(false);
+            $table->boolean('isDikurangi')->default(false);
+            $table->boolean('isDibox')->default(false);
+            $table->boolean('isDone')->default(false);
             $table->timestamps();
         });
 

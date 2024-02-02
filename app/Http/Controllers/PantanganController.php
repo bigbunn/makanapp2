@@ -23,7 +23,8 @@ class PantanganController extends Controller
     }
 
     public function pengajuan(){
-        return view ('pantangan.pengajuan');
+        $datapantangan=Pantangan::where("user_id",Auth()->user()->id)->get();
+        return view ('pantangan.pengajuan',['datapantangan'=>$datapantangan]);
     }
 
     /**
@@ -31,9 +32,31 @@ class PantanganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $this->validate($request,[
+            'user_id'=>'required',
+            'tanggal'=>'required',
+            'lauk_pantangan'=>'required',
+        ]);
+
+        if($request->lauk_pantangan=="lainnya"){
+            Pantangan::create([
+                'user_id'=>$request->user_id,
+                'tanggal_mulai'=>$request->tanggal,
+                'lauk_pantangan'=>$request->lauk_pantangan,
+                'pantangan_lainnya'=>$request->pantangan_lainnya,
+                'keterangan_pantangan'=>$request->keterangan_pantangan
+            ]);
+        }else{
+            Pantangan::create([
+                'user_id'=>$request->user_id,
+                'tanggal_mulai'=>$request->tanggal,
+                'lauk_pantangan'=>$request->lauk_pantangan,
+                'keterangan_pantangan'=>$request->keterangan_pantangan
+            ]);
+        }
+        return redirect('pantangan/pengajuan');
     }
 
     /**

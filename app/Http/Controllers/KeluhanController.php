@@ -38,6 +38,7 @@ class KeluhanController extends Controller
     public function create(Request $request)
     {
         $this->validate($request,[
+            'user_id'=>'required',
             'menu_id'=>'required',
             'tanggal'=>'required',
             'waktumakan'=>'required',
@@ -47,7 +48,7 @@ class KeluhanController extends Controller
 
         if($request->menu_id!=""){
             Keluhan::create([
-                'user_id'=>Auth()->user()->id,
+                'user_id'=>$request->user_id,
                 'menu_id'=>$request->menu_id,
                 'menu_type'=>$request->menumakan,
                 'keterangan_keluhan'=>$request->deskripsikeluhan
@@ -56,7 +57,7 @@ class KeluhanController extends Controller
         else{
             $menu=Menu::where([['tanggal',$request->tanggal],['waktu_makan',$request->waktumakan]])->get();
             Keluhan::create([
-                'user_id'=>Auth()->user()->id,
+                'user_id'=>$request->user_id,
                 'menu_id'=>$menu[0]->id,
                 'menu_type'=>$request->menumakan,
                 'keterangan_keluhan'=>$request->deskripsikeluhan

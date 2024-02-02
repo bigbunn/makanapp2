@@ -9,5 +9,5 @@ class Pantangan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','tanggal_mulai','lauk_pantangan','keterangan_pantangan','isApproved','isDone'];
+    protected $fillable = ['user_id','tanggal_mulai','lauk_pantangan','pantangan_lainnya','keterangan_pantangan','isApproved','isDone'];
 }

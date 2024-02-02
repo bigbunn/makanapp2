@@ -27,10 +27,35 @@
                         <thead>
                             <tr>
                                 <th>Tanggal Pengajuan</th>
-                                <th>Pantangan</th>
+                                <th>Lauk Pantangan</th>
+                                <th>Keterangan</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($datapantangan as $dp)
+                                <tr>
+                                    <th>{{$dp->tanggal_mulai}}</th>
+                                    <th>
+                                        @if($dp->lauk_pantangan=='lainnya')
+                                            {{$dp->pantangan_lainnya}}
+                                        @else
+                                            {{$dp->lauk_pantangan}}
+                                        @endif
+                                    </th>
+                                    <th>{{$dp->keterangan_pantangan}}</th>
+                                    @if($dp->isDone==true)
+                                        <th><span class="badge bg-success">Sembuh</span></th>
+                                    @else
+                                        @if($dp->isApproved==true)
+                                            <th><span class="badge bg-info">Diterima</span></th>
+                                        @else
+                                            <th><span class="badge bg-danger">Diproses</span></th>
+                                        @endif
+                                    @endif
+                                </tr>
+
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -40,19 +65,21 @@
 
     
     <section class="section">
-    <div class="card">
+        <div class="card">
             <div class="card-header">
                 <h6 class="card-title">Pengajuan</h6>
             </div>
             <div class="card-body">
-                <form action="" method="post">
+                <form action="{{route('pantangan.create')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="user_id" value="{{Auth()->user()->id}}">
                     <div class="form-group">
                         <label for="tanggal">Tanggal Mulai Pantangan</label>
                         <input name="tanggal" type="date" id="flatpickr" class="form-control mb-3 flatpickr-no-config" required>
                     </div>
                     <div class="form-group">
-                        <label for="tanggal">Lauk pantangan</label>
-                        <select name="laukpantangan" id="laukpantangan" class="form-select form-control mb-3">
+                        <label for="lauk_pantangan">Lauk pantangan</label>
+                        <select name="lauk_pantangan" id="lauk_pantangan" class="form-select form-control mb-3">
                             <option selected disabled value="">Choose...</option>    
                             <option value="udang">Udang</option>
                             <option value="cumi">Cumi</option>
@@ -64,16 +91,16 @@
                             <option value="gorengan">Gorengan</option>
                             <option value="kerupuk">Kerupuk</option>
                             <option value="keripik">Keripik</option>
-                            <option value="lainnya">Lainnya</option>
+                            <option value="lainnya" >Lainnya</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="collapseLainnya">
                         <label for="pantangan_lainnya">Pantangan Lainnya</label>
-                        <input type="text" class="form-control" name="pantangan_lainnya" id="pantangan_lainnya" required>
+                        <input type="text" class="form-control" name="pantangan_lainnya" id="pantangan_lainnya">
                     </div>
                     <div class="form-group">
                         <label for="keterangan_pantangan">Keterangan Pantangan</label>
-                        <textarea type="text" class="form-control" name="keterangan_pantangan" id="keterangan_pantangan" required></textarea>
+                        <textarea type="text" class="form-control" name="keterangan_pantangan" id="keterangan_pantangan"></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

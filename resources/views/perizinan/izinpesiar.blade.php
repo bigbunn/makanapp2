@@ -4,6 +4,7 @@
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Perizinan</h3>
                 <p class="text-subtitle text-muted">...</p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapsePesiarSaya">Daftar Pesiar Saya</button>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-end float-lg-end">
@@ -15,6 +16,46 @@
         </div>
     </x-slot>
 
+    <section class="section collapse" id="collapsePesiarnSaya">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="card-title">Daftar Pesiar Saya</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-lg">
+                        <thead>
+                            <tr>
+                                <th>Tanggal Pesiar</th>
+                                <th>Alamat Tujuan</th>
+                                <th>Alasan</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($datapesiar as $dp)
+                                <tr>
+                                    <th>{{$dp->tanggal_mulai}}</th>
+                                    <th>{{$dp->alamat}}</th>
+                                    <th>{{$dp->alasan}}</th>
+                                    @if($dp->isDone==true)
+                                        <th><span class="badge bg-success">Done</span></th>
+                                    @else
+                                        @if($dp->isApproved==true)
+                                            <th><span class="badge bg-info">Approved</span></th>
+                                        @else
+                                            <th><span class="badge bg-danger">Processed</span></th>
+                                        @endif
+                                    @endif
+                                </tr>
+
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <section class="section">
         <div class="card">
@@ -35,10 +76,19 @@
                     </div>
                 </div>
                 <div class="col-9 col-md-9 col-sm-12">
-                    <form action="" method="post" class="form collapse" id="collapsePesiar">
+                    <form action="{{route('perizinan.create')}}" method="post" class="form collapse" id="collapsePesiar">
+                        
                         <div class="form-group">
                             <label for="tanggal">Tanggal Izin Pesiar</label>
                             <input name="tanggal" type="date" id="flatpickr" class="form-control mb-3 flatpickr-no-config" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="jam_mulai">Jam Mulai Izin Pesiar</label>
+                            <input name="jam_mulai" type="time" class="form-control mb-3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="jam_selesai">Jam Selesai Izin Pesiar</label>
+                            <input name="jam_selesai" type="time" id="flatpickr" class="form-control mb-3 flatpickr-no-config" required>
                         </div>
                         <div class="form-group">
                             <label for="alamat">Alamat Tujuan</label>
@@ -51,7 +101,7 @@
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                             <h6 class="">Kurangi makan siang</h6>
                             <div class="form-check form-switch fs-6">
-                                <input class="form-check-input me-0" type="checkbox">
+                                <input class="form-check-input me-0" name="dikurangi" type="checkbox">
                             </div>
                         </div>
                         <div class="row justify-content-end">

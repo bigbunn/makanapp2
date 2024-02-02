@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     });
     Route::group(['prefix'=> 'pantangan','as'=> 'pantangan.'], function() {
         Route::get('/pengajuan',[PantanganController::class,'pengajuan'])->name('pengajuan');
+        Route::post('create',[PantanganController::class,'create'])->name('create');
         Route::middleware('checkrole:1')->get('/index', [PantanganController::class,'index'])->name('index');
     });
     Route::group(['prefix'=> 'keluhan','as'=> 'keluhan.'], function() {
@@ -57,7 +58,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     });
     Route::group(['prefix'=> 'perizinan','as'=> 'perizinan.'], function() {
         Route::middleware('checkrole:1')->get('/all', [PerizinanController::class,'index'])->name('all');
-        
+        Route::post('/create',[PerizinanController::class,'create'])->name('create');
         Route::get('/izinbermalam', [PerizinanController::class,'izinbermalamindex'])->name('izinbermalam');
         Route::get('/izinpesiar', [PerizinanController::class,'izinpesiarindex'])->name('izinpesiar');
         Route::get('/izinkeluar', [PerizinanController::class,'izinkeluarindex'])->name('izinkeluar');

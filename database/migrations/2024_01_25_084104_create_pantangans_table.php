@@ -20,8 +20,8 @@ return new class extends Migration
             $table->enum('lauk_pantangan',['udang','cumi','ikan','seafood','daging','ayam','telur','gorengan','kerupuk','keripik','lainnya']);
             $table->string('pantangan_lainnya')->nullable();
             $table->string('keterangan_pantangan')->nullable();
-            $table->boolean('isApproved');
-            $table->boolean('isDone');
+            $table->boolean('isApproved')->default(false);
+            $table->boolean('isDone')->default(false);
             $table->timestamps();
         });
     }

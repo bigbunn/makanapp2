@@ -62,6 +62,7 @@
             <div class="card-body">
                 <form action="{{route('keluhan.create')}}" method="post">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{Auth()->user()->id}}">
                     <input type="hidden" id="inputMenuId" name="menu_id" value="">
                     <div class="form-group">
                         <label for="tanggal">Tanggal Keluhan</label>

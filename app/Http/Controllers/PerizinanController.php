@@ -24,7 +24,8 @@ class PerizinanController extends Controller
     }
 
     public function izinpesiarindex(){
-        return view('perizinan.izinpesiar');
+        $datapesiar=Perizinan::where([['tipe_izin','pesiar'],['user_id',Auth()->user()->id]])->get();
+        return view('perizinan.izinpesiar',['datapesiar'=>$datapesiar]);
     }
 
     public function izinbermalamindex(){
@@ -42,9 +43,55 @@ class PerizinanController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
+    public function createIzinPesiar(Request $request){
+        $this->validate($request,[
+            'jam_mulai'=>'required',
+            'jam_selesai'=>'jam_selesai',
+            'tanggal'=>'required',
+            'alamat'=>'required',
+            'alasan'=>'required'
+        ]);
+
+        if(!isset($request->user_id)){
+            $user_id=Auth()->user()->id;
+
+            $cekPesiar = Perizinan::where([['tipe_izin','pesiar'],['user_id',$user_id],['tanggal_mulai',$request->tanggal]])->get();
+
+            if(!isset($cekPesiar[0])){
+                Pesiar::create([
+                    'user_id'=>$user_id,
+                    'tipe_izin'=>'pesiar',
+                    'tanggal_mulai'=>$request->tanggal,
+                    'tanggal_selesai'=>$request->tanggal,
+                    'jam_mulai'=>$request->jam_mulai,
+                    'jam_selesai'=>$request->jam_selesai,
+                    'alamat'=>$request->alamat,
+                    'alasan'=>$request->alasan
+                ]);
+            }
+        }
+
+        return redirect('perizinan/izinpesiar');
+    }
+
+    public function createIzinBermalam(Request $request){
+        $this->validate($request,[
+            'tanggal'=>'required',
+            'alamat'=>'required',
+            'alasan'=>'required'
+        ]);
+    }
+
+    public function createIzinKeluar(Request $request){
+        $this->validate($request,[
+            'tanggal'=>'required',
+            'alamat'=>'required',
+            'alasan'=>'required'
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      *
