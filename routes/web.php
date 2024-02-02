@@ -44,17 +44,20 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     });
     Route::group(['prefix'=> 'keluhan','as'=> 'keluhan.'], function() {
         Route::get('/laporan', [KeluhanController::class,'laporan'])->name('laporan');
-        Route::get('/create', [KeluhanController::class,'create'])->name('create');
+        Route::post('/create', [KeluhanController::class,'create'])->name('create');
+
         Route::middleware('checkrole:1')->get('/index', [KeluhanController::class,'index'])->name('index');
     });
     Route::group(['prefix'=> 'puasa','as'=> 'puasa.'], function() {
         Route::get('/daftar', [PuasaController::class,'daftar'])->name('daftar');
         Route::post('/create',[PuasaController::class,'create'])->name('create');
         Route::get('/hapus/{id}',[PuasaController::class,'delete'])->name('hapus');
+
         Route::middleware('checkrole:1')->get('/index', [PuasaController::class,'index'])->name('index');
     });
     Route::group(['prefix'=> 'perizinan','as'=> 'perizinan.'], function() {
         Route::middleware('checkrole:1')->get('/all', [PerizinanController::class,'index'])->name('all');
+        
         Route::get('/izinbermalam', [PerizinanController::class,'izinbermalamindex'])->name('izinbermalam');
         Route::get('/izinpesiar', [PerizinanController::class,'izinpesiarindex'])->name('izinpesiar');
         Route::get('/izinkeluar', [PerizinanController::class,'izinkeluarindex'])->name('izinkeluar');

@@ -25,7 +25,8 @@ class KeluhanController extends Controller
 
     public function laporan(){
         $datamenu = Menu::all();
-        return view("keluhan.laporan",['datamenu'=>$datamenu]);
+        $datakeluhan = Keluhan::where(['user_id',Auth()->user()->id]);
+        return view("keluhan.laporan",['datamenu'=>$datamenu,'datakeluhan'=>$datakeluhan]);
     }
 
     /**
@@ -37,16 +38,29 @@ class KeluhanController extends Controller
     {
         $this->validate($request,[
             'menu_id'=>'required',
-            'menukeluhan'=>'required',
-            'deskripsikeluhan'=>'required',
+            'tanggal'=>'required',
+            'waktumakan'=>'required',
+            'menumakan'=>'required',
+            'deskripsikeluhan'=>'required'
         ]);
 
-        Keluhan::create([
-            'user_id'=>Auth()->user()->id,
-            'menu_id'=>$request->menu_id,
-            'menu_type'=>$request->menukeluhan,
-            'keterangankeluhan'=>$request->deskripsikeluhan
-        ]);
+        if($request->menu_id!=""){
+            Keluhan::create([
+                'user_id'=>Auth()->user()->id,
+                'menu_id'=>$request->menu_id,
+                'menu_type'=>$request->menumakan,
+                'keterangan_keluhan'=>$request->deskripsikeluhan
+            ]);
+        }
+        else{
+            $menu=Menu::where([['tanggal',$request->tanggal],['waktu_makan',$request->waktumakan]])->get();
+            Keluhan::create([
+                'user_id'=>Auth()->user()->id,
+                'menu_id'=>$menu[0]->id,
+                'menu_type'=>$request->menumakan,
+                'keterangan_keluhan'=>$request->deskripsikeluhan
+            ]);
+        }
 
         return redirect('keluhan/laporan');
     }
