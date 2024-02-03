@@ -63,7 +63,7 @@ class PuasaController extends Controller
             'tanggal'=>'required'
         ]);
 
-        $cekPuasa = Puasa::where([['user_id',Auth()->user()->id],['tanggal_puasa',$request->tanggal]],)->get();
+        $cekPuasa = Puasa::where([['user_id',Auth()->user()->id],['tanggal_puasa',$request->tanggal]])->get();
 
         if(isset($cekPuasa[0])){
             return redirect('puasa/daftar');

@@ -27,6 +27,8 @@ return new class extends Migration
             $table->boolean('isDiuangkan')->default(false);
             $table->boolean('isDikurangi')->default(false);
             $table->boolean('isDibox')->default(false);
+            $table->string('keterangan_diuangkan')->nullable();
+            $table->string('keterangan_dibox')->nullable();
             $table->boolean('isDone')->default(false);
             $table->timestamps();
         });

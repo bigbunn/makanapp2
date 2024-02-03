@@ -132,7 +132,7 @@
                                         <h6 class="text-muted font-semibold">Perizinan</h6>
                                         <h6 class="font-extrabold mb-0">
                                             @if(isset($perizinan_taruna[0]))
-                                                {{count($keluhan_taruna)}}
+                                                {{count($perizinan_taruna)}}
                                             @else
                                                 Tidak ada
                                             @endif

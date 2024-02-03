@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Perizinan;
+use App\Models\Taruna;
+use App\Models\Kelas;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
 class PerizinanController extends Controller
@@ -24,16 +27,30 @@ class PerizinanController extends Controller
     }
 
     public function izinpesiarindex(){
-        $datapesiar=Perizinan::where([['tipe_izin','pesiar'],['user_id',Auth()->user()->id]])->get();
-        return view('perizinan.izinpesiar',['datapesiar'=>$datapesiar]);
+        $pesiarall = Perizinan::where('tipe_izin','pesiar')->get();
+        $taruna = Taruna::all();
+        
+        $kelas_taruna= Kelas::all();
+        $unit_taruna= Unit::all();
+
+        $datapesiar=Perizinan::where([['user_id',Auth()->user()->id],['tipe_izin','pesiar']])->get();
+        return view('perizinan.izinpesiar',['datapesiar'=>$datapesiar,'pesiarall'=>$pesiarall,'taruna'=>$taruna,'kelas_taruna'=>$kelas_taruna,'unit_taruna'=>$unit_taruna]);
     }
 
     public function izinbermalamindex(){
-        return view('perizinan.izinbermalam');
+        $bermalamall = Perizinan::where('tipe_izin','bermalam')->get();
+        $taruna = Taruna::all();
+        
+        $kelas_taruna= Kelas::all();
+        $unit_taruna= Unit::all();
+
+        $databermalam=Perizinan::where([['user_id',Auth()->user()->id],['tipe_izin','bermalam']])->get();
+        return view('perizinan.izinbermalam',['databermalam'=>$databermalam,'bermalamall'=>$bermalamall,'taruna'=>$taruna,'kelas_taruna'=>$kelas_taruna,'unit_taruna'=>$unit_taruna]);
     }
 
     public function izinkeluarindex(){
-        return view('perizinan.izinkeluar');
+        $datakeluar=Perizinan::where([['user_id',Auth()->user()->id],['tipe_izin','keluar']])->get();
+        return view('perizinan.izinkeluar',['datakeluar'=>$datakeluar]);
     }
 
     /**
@@ -41,37 +58,44 @@ class PerizinanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        
+
     }
 
     public function createIzinPesiar(Request $request){
         $this->validate($request,[
             'jam_mulai'=>'required',
-            'jam_selesai'=>'jam_selesai',
+            'jam_selesai'=>'required',
             'tanggal'=>'required',
             'alamat'=>'required',
             'alasan'=>'required'
         ]);
 
-        if(!isset($request->user_id)){
+        if(isset($request->user_id)){
+            $user_id=$request->user_id;
+        }else{
             $user_id=Auth()->user()->id;
+        }
 
-            $cekPesiar = Perizinan::where([['tipe_izin','pesiar'],['user_id',$user_id],['tanggal_mulai',$request->tanggal]])->get();
-
-            if(!isset($cekPesiar[0])){
-                Pesiar::create([
-                    'user_id'=>$user_id,
-                    'tipe_izin'=>'pesiar',
-                    'tanggal_mulai'=>$request->tanggal,
-                    'tanggal_selesai'=>$request->tanggal,
-                    'jam_mulai'=>$request->jam_mulai,
-                    'jam_selesai'=>$request->jam_selesai,
-                    'alamat'=>$request->alamat,
-                    'alasan'=>$request->alasan
-                ]);
+        $cekPesiar = Perizinan::where([['tipe_izin','pesiar'],['user_id',$user_id],['tanggal_mulai',$request->tanggal]])->get();
+        if(!isset($cekPesiar[0])){
+            if($request->dikurangi==true){
+                $dikurangi=true;
+            }else{
+                $dikurangi=false;
             }
+            Perizinan::create([
+                'user_id'=>$user_id,
+                'tipe_izin'=>'pesiar',
+                'tanggal_mulai'=>$request->tanggal,
+                'tanggal_selesai'=>$request->tanggal,
+                'jam_mulai'=>$request->jam_mulai,
+                'jam_selesai'=>$request->jam_selesai,
+                'alamat'=>$request->alamat,
+                'alasan'=>$request->alasan,
+                'isDikurangi'=>$dikurangi,
+            ]);
         }
 
         return redirect('perizinan/izinpesiar');
@@ -79,18 +103,104 @@ class PerizinanController extends Controller
 
     public function createIzinBermalam(Request $request){
         $this->validate($request,[
-            'tanggal'=>'required',
+            'tanggal_mulai'=>'required',
+            'tanggal_selesai'=>'required',
             'alamat'=>'required',
             'alasan'=>'required'
         ]);
+
+        $jam_mulai="13:30:00";
+        $jam_selesai="19:30:00";
+
+        if(isset($request->user_id)){
+            $user_id=$request->user_id;
+        }else{
+            $user_id=Auth()->user()->id;
+        }
+
+        $cekBermalam = Perizinan::where([['tipe_izin','bermalam'],['user_id',$user_id],['tanggal_mulai',$request->tanggal_mulai]])->get();
+
+        if(!isset($cekBermalam[0])){
+            Perizinan::create([
+                'user_id'=>$user_id,
+                'tipe_izin'=>'bermalam',
+                'tanggal_mulai'=>$request->tanggal_mulai,
+                'tanggal_selesai'=>$request->tanggal_selesai,
+                'jam_mulai'=>$jam_mulai,
+                'jam_selesai'=>$jam_selesai,
+                'alamat'=>$request->alamat,
+                'alasan'=>$request->alasan,
+                'isDikurangi'=>true,
+            ]);
+        }
+
+        return redirect('perizinan/izinbermalam');
     }
 
     public function createIzinKeluar(Request $request){
         $this->validate($request,[
-            'tanggal'=>'required',
+            'jam_mulai'=>'required',
+            'jam_selesai'=>'required',
+            'tanggal_mulai'=>'required',
+            'tanggal_selesai'=>'required',
             'alamat'=>'required',
-            'alasan'=>'required'
+            'alasan'=>'required',
         ]);
+
+        if(isset($request->user_id)){
+            $user_id=$request->user_id;
+        }else{
+            $user_id=Auth()->user()->id;
+        }
+
+        $cekKeluar = Perizinan::where([['tipe_izin','keluar'],['user_id',$user_id],['tanggal_mulai',$request->tanggal_mulai]])->get();
+        
+        if(!isset($cekKeluar[0])){
+            if($request->diuangkan==true || $request->dibox==true){
+                $dikurangi=false;
+
+                if($request->diuangkan==true){
+                    $diuangkan=true;
+                    $keterangan_diuangkan=$request->keterangan_diuangkan;
+                }else{
+                    $diuangkan=false;
+                    $keterangan_diuangkan="";
+                }
+
+                if($request->dibox==true){
+                    $dibox=true;
+                    $keterangan_dibox=$request->keterangan_dibox;
+                }else{
+                    $dibox=false;
+                    $keterangan_dibox="";
+                }
+            }
+            else{
+                $diuangkan=false;
+                $keterangan_diuangkan="";
+                $dibox=true;
+                $keterangan_dibox=$request->keterangan_dibox;
+                $dikurangi=true;
+            }
+            Perizinan::create([
+                'user_id'=>$user_id,
+                'tipe_izin'=>'keluar',
+                'tanggal_mulai'=>$request->tanggal_mulai,
+                'tanggal_selesai'=>$request->tanggal_selesai,
+                'jam_mulai'=>$request->jam_mulai,
+                'jam_selesai'=>$request->jam_selesai,
+                'alamat'=>$request->alamat,
+                'alasan'=>$request->alasan,
+                'isDikurangi'=>$dikurangi,
+                'isDibox'=>$dibox,
+                'isDiuangkan'=>$diuangkan,
+                'keterangan_dibox'=>$keterangan_dibox,
+                'keterangan_diuangkan'=>$keterangan_diuangkan,
+                
+            ]);
+        }
+
+        return redirect('perizinan/izinkeluar');
     }
     /**
      * Store a newly created resource in storage.

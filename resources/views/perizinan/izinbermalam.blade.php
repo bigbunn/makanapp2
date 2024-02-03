@@ -1,9 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
+            <div class="col-12 col-md-6 order-md-1 order-last mb-3">
                 <h3>Perizinan</h3>
-                <p class="text-subtitle text-muted">...</p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseBermalamSaya">Izin Bermalam Saya</button>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-end float-lg-end">
@@ -14,6 +14,47 @@
             </div>
         </div>
     </x-slot>
+
+    <section class="section collapse" id="collapseBermalamSaya">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="card-title">Izin Bermalam Saya</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-lg">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Alamat Tujuan</th>
+                                <th>Alasan</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($databermalam as $db)
+                                <tr>
+                                    <th>{{$db->tanggal_mulai}} - {{$db->tanggal_selesai}}</th>
+                                    <th>{{$db->alamat}}</th>
+                                    <th>{{$db->alasan}}</th>
+                                    @if($db->isDone==true)
+                                        <th><span class="badge bg-success">Done</span></th>
+                                    @else
+                                        @if($db->isApproved==true)
+                                            <th><span class="badge bg-info">Approved</span></th>
+                                        @else
+                                            <th><span class="badge bg-danger">Processed</span></th>
+                                        @endif
+                                    @endif
+                                </tr>
+
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
     
     <section class="section">
@@ -36,10 +77,15 @@
                     </div>
                 </div>
                 <div class="col-9 col-md-9 col-sm-12">
-                    <form action="" method="post" class="form collapse" id="collapseBermalam">
+                    <form action="{{route('perizinan.createizinbermalam')}}" method="post" class="form collapse" id="collapseBermalam">
+                        @csrf
                         <div class="form-group">
-                            <label for="tanggal">Tanggal Izin Bermalam</label>
-                            <input name="tanggal" type="date" id="flatpickr-range" class="form-control mb-3 flatpickr-range" required>
+                            <label for="tanggal_mulai">Tanggal Mulai</label>
+                            <input name="tanggal_mulai" type="date" id="flatpickr-range" class="form-control mb-3 flatpickr-range" required >
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggal_selesai">Tanggal Izin Bermalam</label>
+                            <input name="tanggal_selesai" type="date" id="flatpickr-range" class="form-control mb-3 flatpickr-range" required >
                         </div>
                         <div class="form-group">
                             <label for="alamat">Alamat Tujuan</label>
@@ -65,7 +111,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">
-                        Daftar Taruna Pesiar
+                        Daftar Taruna Izin Bermalam
                     </h5>
                     <h6 class="card-title">22/10/2024 - 23/10/2024</h6>
                 </div>
@@ -80,30 +126,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Graiden</td>
-                                <td>Unit C Satria</td>
-                                <td>4 RPLK</td>
-                                <td>A</td>
-                            </tr>
-                            <tr>
-                                <td>Dale</td>
-                                <td>Unit D Satria</td>
-                                <td>4 RKS Red</td>
-                                <td>F</td>
-                            </tr>
-                            <tr>
-                                <td>Nathaniel</td>
-                                <td>Unit A Madya</td>
-                                <td>3 RPK</td>
-                                <td>C</td>
-                            </tr>
+                            @foreach($bermalamall as $p)
+                                @foreach($taruna as $t)
+                                    @if($t->user_id==$p->user_id)
+                                    <tr>
+                                        <td>{{$t->nama_lengkap}}</td>
+                                        <td>
+                                            @foreach($unit_taruna as $u)
+                                                @if($u->id==$t->unit_id)
+                                                    {{$u->nama_unit}}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach($kelas_taruna as $k)
+                                                @if($k->id==$t->kelas_id)
+                                                    {{$k->nama_kelas}}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                        <td>{{$t->nomor_kamar}}</td>
+                                    </tr>
+                                    @endif
+                                @endforeach
+                            @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </section>
+    @section('script')
+        <script>
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementsByName("tanggal_mulai")[0].setAttribute('min', today);
+            document.getElementsByName("tanggal_selesai")[0].setAttribute('min', today);
+        </script>
+    @endsection
 </x-app-layout>
 
 

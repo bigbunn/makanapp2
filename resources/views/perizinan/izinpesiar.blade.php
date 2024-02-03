@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
+            <div class="col-12 col-md-6 order-md-1 order-last mb-3">
                 <h3>Perizinan</h3>
                 <p class="text-subtitle text-muted">...</p>
-                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapsePesiarSaya">Daftar Pesiar Saya</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapsePesiarSaya">Pesiar Saya</button>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-end float-lg-end">
@@ -16,10 +16,10 @@
         </div>
     </x-slot>
 
-    <section class="section collapse" id="collapsePesiarnSaya">
+    <section class="section collapse" id="collapsePesiarSaya">
         <div class="card">
             <div class="card-header">
-                <h6 class="card-title">Daftar Pesiar Saya</h6>
+                <h6 class="card-title">Pesiar Saya</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -76,8 +76,8 @@
                     </div>
                 </div>
                 <div class="col-9 col-md-9 col-sm-12">
-                    <form action="{{route('perizinan.create')}}" method="post" class="form collapse" id="collapsePesiar">
-                        
+                    <form action="{{route('perizinan.createizinpesiar')}}" method="post" class="form collapse" id="collapsePesiar">
+                        @csrf
                         <div class="form-group">
                             <label for="tanggal">Tanggal Izin Pesiar</label>
                             <input name="tanggal" type="date" id="flatpickr" class="form-control mb-3 flatpickr-no-config" required>
@@ -121,7 +121,7 @@
                     <h5 class="card-title">
                         Daftar Taruna Pesiar
                     </h5>
-                    <h6 class="card-title">22/10/2024</h6>
+                    <!-- <h6 class="card-title">22/10/2024</h6> -->
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
@@ -134,30 +134,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Graiden</td>
-                                <td>Unit C Satria</td>
-                                <td>4 RPLK</td>
-                                <td>A</td>
-                            </tr>
-                            <tr>
-                                <td>Dale</td>
-                                <td>Unit D Satria</td>
-                                <td>4 RKS Red</td>
-                                <td>F</td>
-                            </tr>
-                            <tr>
-                                <td>Nathaniel</td>
-                                <td>Unit A Madya</td>
-                                <td>3 RPK</td>
-                                <td>C</td>
-                            </tr>
+                            @foreach($pesiarall as $p)
+                                @foreach($taruna as $t)
+                                    @if($t->user_id==$p->user_id)
+                                    <tr>
+                                        <td>{{$t->nama_lengkap}}</td>
+                                        <td>
+                                            @foreach($unit_taruna as $u)
+                                                @if($u->id==$t->unit_id)
+                                                    {{$u->nama_unit}}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach($kelas_taruna as $k)
+                                                @if($k->id==$t->kelas_id)
+                                                    {{$k->nama_kelas}}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                        <td>{{$t->nomor_kamar}}</td>
+                                    </tr>
+                                    @endif
+                                @endforeach
+                            @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </section>
+
+    @section('script')
+        <script>
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementsByName("tanggal")[0].setAttribute('min', today);
+        </script>
+    @endsection
 </x-app-layout>
 
 
