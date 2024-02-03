@@ -7,6 +7,7 @@ use App\Models\Taruna;
 use App\Models\Kelas;
 use App\Models\Unit;
 use App\Models\User;
+use App\Models\Pantangan;
 use Illuminate\Http\Request;
 
 class PuasaController extends Controller
@@ -18,11 +19,22 @@ class PuasaController extends Controller
      */
     public function index()
     {
+        $taruna=Taruna::all();
+        $kelas=Kelas::all();
+        $unit=Unit::all();
+        $pantangan=Pantangan::all();
+        $puasa=Puasa::all();
         $dataPuasa = [
             'labels' => ['January', 'February', 'March', 'April', 'May'],
             'data' => [40, 45, 80, 71, 96],
         ];
-        return view('puasa.index', compact(['dataPuasa']));
+        return view('puasa.index',[
+            'taruna'=>$taruna,
+            'kelas'=>$kelas,
+            'unit'=>$unit,
+            'pantangan'=>$pantangan,
+            'puasa'=>$puasa,
+        ], compact(['dataPuasa']));
     }
 
     public function daftar(){

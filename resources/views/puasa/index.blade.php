@@ -55,46 +55,56 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped" id="table1">
-                            <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>Unit</th>
-                                    <th>Kelas</th>
-                                    <th>Asrama</th>
-                                    <th>Pantangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Graiden</td>
-                                    <td>Unit C Satria</td>
-                                    <td>4 RPLK</td>
-                                    <td>A</td>
-                                    <td>
-                                        <span class="badge bg-success">Tidak ada</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Dale</td>
-                                    <td>Unit D Satria</td>
-                                    <td>4 RKS Red</td>
-                                    <td>F</td>
-                                    <td>
-                                        <span class="badge bg-success">Tidak ada</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Nathaniel</td>
-                                    <td>Unit A Madya</td>
-                                    <td>3 RPK</td>
-                                    <td>C</td>
-                                    <td>
-                                        <span class="badge bg-danger">Ada</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        @if(isset($puasa[0]))
+                            <table class="table table-striped" id="table1">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Unit</th>
+                                        <th>Kelas</th>
+                                        <th>Asrama</th>
+                                        <th>Pantangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($puasa as $p)
+                                        @foreach($taruna as $t)
+                                            @if($t->user_id==$p->user_id)
+                                                @foreach($kelas as $k)
+                                                    @if($t->kelas_id==$k->id)
+                                                        @foreach($unit as $u)
+                                                            @if($u->id==$t->unit_id)
+                                                                <tr>
+                                                                    <td>{{$t->nama_lengkap}}</td>
+                                                                    <td>{{$u->nama_unit}}</td>
+                                                                    <td>{{$k->nama_kelas}}</td>
+                                                                    <td>{{$t->nomor_kamar}}</td>
+                                                                    <td>
+                                                                        @foreach($pantangan as $p)
+                                                                            {{$ada=false}}
+                                                                            @if($p->user_id==$t->user_id)
+                                                                                {{$ada=true}}
+                                                                            @endif
+                                                                        @endforeach
+                                                                        @if($ada)
+                                                                        <span class="badge bg-danger">Ada</span>
+                                                                        @else
+                                                                        <span class="badge bg-success">Tidak Ada</span>
+                                                                        @endif
+                                                                    </td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                        <h6 class="card-description">No entry</h6>
+                        @endif
                     </div>
                 </div>
             </section>

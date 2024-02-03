@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Keluhan;
 use App\Models\Menu;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class KeluhanController extends Controller
@@ -15,12 +16,16 @@ class KeluhanController extends Controller
      */
     public function index()
     {
-        
+        $user=User::all();
+        $keluhan= Keluhan::all();
         $dataKeluhan = [
             'labels' => ['January', 'February', 'March', 'April', 'May'],
             'data' => [65, 59, 80, 81, 56],
         ];
-        return view('keluhan.index', compact(['dataKeluhan']));
+        return view('keluhan.index', [
+            'keluhan'=>$keluhan,
+            'user'=>$user
+        ],compact(['dataKeluhan']));
     }
 
     public function laporan(){
@@ -50,6 +55,7 @@ class KeluhanController extends Controller
             Keluhan::create([
                 'user_id'=>$request->user_id,
                 'menu_id'=>$request->menu_id,
+                'tanggal'=>$request->tanggal,
                 'menu_type'=>$request->menumakan,
                 'keterangan_keluhan'=>$request->deskripsikeluhan
             ]);
@@ -59,6 +65,7 @@ class KeluhanController extends Controller
             Keluhan::create([
                 'user_id'=>$request->user_id,
                 'menu_id'=>$menu[0]->id,
+                'tanggal'=>$request->tanggal,
                 'menu_type'=>$request->menumakan,
                 'keterangan_keluhan'=>$request->deskripsikeluhan
             ]);

@@ -17,13 +17,30 @@ class PerizinanController extends Controller
      */
     public function index()
     {
+        $keluarall = Perizinan::where('tipe_izin','keluar')->get();
+        $bermalamall = Perizinan::where('tipe_izin','bermalam')->get();
+        $pesiarall = Perizinan::where('tipe_izin','pesiar')->get();
+
+        $taruna = Taruna::all();        
+        $kelas_taruna= Kelas::all();
+        $unit_taruna= Unit::all();
+
+
         $dataPerizinan = [
             'labels'=>['January', 'February', 'March', 'April', 'May'],
             'dataIzinKeluar'=>[2, 1, 4, 24, 10],
             'dataIzinPesiar'=>[40, 45, 80, 71, 96],
             'dataIzinBermalam'=>[20, 25, 20, 11, 36],
         ];
-        return view('perizinan.index', compact(['dataPerizinan']));
+
+        return view('perizinan.index',[
+            'keluarall'=>$keluarall,
+            'bermalamall'=>$bermalamall,
+            'pesiarall'=>$pesiarall,
+            'taruna'=>$taruna,
+            'kelas_taruna'=>$kelas_taruna,
+            'unit_taruna'=>$unit_taruna
+        ], compact(['dataPerizinan']));
     }
 
     public function izinpesiarindex(){

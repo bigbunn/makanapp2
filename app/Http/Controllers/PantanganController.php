@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pantangan;
+use App\Models\User;
+use App\Models\Taruna;
+use App\Models\Kelas;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
 class PantanganController extends Controller
@@ -14,12 +18,23 @@ class PantanganController extends Controller
      */
     public function index()
     {
+        $user=User::all();
+        $taruna=Taruna::all();
+        $pantangan=Pantangan::all();
+        $kelas=Kelas::all();
+        $unit=Unit::all();
 
         $dataPantangan = [
             'labels'=> ['Udang','Cumi','Bubur','Lainya'],
             'data'=> [10, 2, 4, 13],
             ];
-        return view('pantangan.index', compact(['dataPantangan']));
+        return view('pantangan.index',[
+            'user'=>$user,
+            'taruna'=>$taruna,
+            'pantangan'=>$pantangan,
+            'kelas'=>$kelas,
+            'unit'=>$unit
+        ], compact(['dataPantangan']));
     }
 
     public function pengajuan(){

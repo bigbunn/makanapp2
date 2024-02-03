@@ -41,6 +41,7 @@
                     <h4>Data Pantangan</h4>
                 </div>
                 <div class="card-body">
+                    @if(isset($pantangan[0]))
                     <div class="table-responsive">
                         <table class="table table-hover table-lg">
                             <thead>
@@ -50,32 +51,51 @@
                                     <th>Kelas</th>
                                     <th>Asrama</th>
                                     <th>Pantangan</th>
+                                    <th>Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach($pantangan as $p)
+                                {{$t=$taruna->where('user_id',$p->user_id)->first()}}
+                                {{$u=$user->where('id',$p->user_id)->first()}}
+                                {{$kel=$kelas->where('id',$t->kelas_id)->first()}}
+                                {{$un=$unit->where('id',$t->unit_id)->first()}}
                                 <tr>
-                                    <td class="col-2">
+                                    <td class="col-4">
                                         <div class="d-flex align-items-center">
-                                            <p class="font-bold">Si Cantik</p>
+                                            <div class="avatar avatar-md">
+                                                <img src="{{ $u->profile_photo_url }}" alt="{{ $u->name }}">
+                                            </div>
+                                            <p class="font-bold ms-3 mb-0">{{$u->name}}</p>
                                         </div>
                                     </td>
-                                    <td class="col-1">
-                                        <p class=" mb-0">Unit A Pratama</p>
-                                    </td>
-                                    <td class="col-1">
-                                        <p class=" mb-0">1 RKS A</p>
-                                    </td>
-                                    <td class="col-1">
-                                        <p class=" mb-0">A501</p>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">{{$kel->nama_kelas}}</p>
                                     </td>
                                     <td class="col-auto">
-                                        <p class=" mb-0">Udang</p>
+                                        <p class=" mb-0">{{$un->nama_unit}}</p>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">{{$t->nomor_kamar}}</p>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">{{$p->lauk_pantangan}}</p>
+                                    </td>
+                                    <td class="col-auto">
+                                        <p class=" mb-0">{{$p->keterangan_pantangan}}</p>
                                     </td>
                                 </tr>
+                                       
+                                    
+                            @endforeach
+                               
                                 
                             </tbody>
                         </table>
                     </div>
+                    @else
+                    <h6 class="card-description">No entry</h6>
+                    @endif
                 </div>
             </div>
         </div> 
