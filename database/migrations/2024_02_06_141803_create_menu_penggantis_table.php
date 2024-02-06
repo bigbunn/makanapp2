@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('menu_penggantis', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("pantangan_id");
             $table->unsignedBigInteger("menu_id");
             $table->string("menu_pengganti");
             $table->boolean("isRead")->default(False);

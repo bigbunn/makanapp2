@@ -52,6 +52,7 @@
                                     <th>Asrama</th>
                                     <th>Pantangan</th>
                                     <th>Keterangan</th>
+                                    <th>Menu Pengganti</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,6 +100,9 @@
                                 </td>
                                 <td class="col-auto">
                                     <p class=" mb-0">{{$p->keterangan_pantangan}}</p>
+                                </td>
+                                <td class="col-auto">
+                                    <button type="button" class="btn btn-primary">Ajukan Pengganti</button>
                                 </td>
                             </tr>
                                     

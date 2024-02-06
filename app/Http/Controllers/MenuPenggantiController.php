@@ -27,12 +27,14 @@ class MenuPenggantiController extends Controller
         $this->validate($request,[
             'user_id'=>'required',
             'menu_id'=>'required',
-            'menu_pengganti'=>'required'
+            'menu_pengganti'=>'required',
+            'pantangan_id'=> 'required',
         ]);
 
         MenuPengganti::create([
             'user_id'=>$request->user_id,
             'menu_id'=>$request->menu_id,
+            'pantangan_id'=>$request->pantangan_id,
             'menu_pengganti'=>$request->menu_pengganti
         ]);
 

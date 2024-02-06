@@ -9,5 +9,5 @@ class MenuPengganti extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','menu_id','menu_pengganti','isRead'];
+    protected $fillable = ['user_id','menu_id','pantangan_id','menu_pengganti','isRead'];
 }
