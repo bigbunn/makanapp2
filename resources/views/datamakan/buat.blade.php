@@ -15,7 +15,7 @@
         </div>
     </x-slot>
 
-    <form action="#" method="post">
+    <form action="#" method="get">
         <section class="row">
             <div class="col-12 col-lg-12">
                 <div class="row justify-content-center">
@@ -23,7 +23,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Data Makan</h4>
-                                <button type="button" onclick="updateTable()" class="btn btn-primary">Refresh</button>
+                                <!-- <button type="button" onclick="updateTable()" class="btn btn-primary">Refresh</button> -->
                                 
                             </div>
                             <div class="card-body table-responsive">
