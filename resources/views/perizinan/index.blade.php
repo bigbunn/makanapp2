@@ -60,39 +60,43 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($keluarall as $k)
+                            @foreach($keluarall as $p)
                                 @foreach($taruna as $t)
-                                    @if($t->user_id==$k->user_id)
+                                    @if($t->user_id==$p->user_id)
                                     <tr>
                                         <td>{{$t->nama_lengkap}}</td>
-                                        <td>
+                                        <td class="text-center">
                                             @foreach($unit_taruna as $u)
                                                 @if($u->id==$t->unit_id)
                                                     {{$u->nama_unit}}
                                                 @endif
                                             @endforeach
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             @foreach($kelas_taruna as $k)
                                                 @if($k->id==$t->kelas_id)
                                                     {{$k->nama_kelas}}
                                                 @endif
                                             @endforeach
                                         </td>
-                                        <td>{{$t->nomor_kamar}}</td>
-                                        <td>{{$k->tanggal_mulai}} - {{$k->tanggal_selesai}}</td>
-                                        
-                                        @if($k->isDone==true)
-                                        <td><span class="badge bg-success">Done</span></td>
+                                        <td class="text-center">{{$t->nomor_kamar}}</td>
+                                        <td class="text-center">{{$p->tanggal_mulai}} -  {{$p->tanggal_selesai}}</</td>
+
+                                        @if($p->isDone==true)
+                                        <td class="text-center"><span class="badge bg-success">Done</span></td>
                                         @else
-                                            @if($k->isApproved==true)
-                                            <td><span class="badge bg-info">Approved</span></td>
+                                            @if($p->isApproved==true)
+                                            <td class="text-center"><span class="badge bg-info">Approved</span></td>
                                             @else
-                                            <td><span class="badge bg-danger">Waiting for approval</span></td>
+                                            <td class="text-center"><span class="badge bg-danger">Waiting for approval</span></td>
                                             @endif
                                         @endif
-                                        
-                                        <td><button type="button" class="btn btn-primary">Approve</button></td>
+
+                                        <form action="{{route('perizinan.approve')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="perizinan_id" value="{{ $p->id }}">
+                                            <td class="text-center"><button type="submit" class="btn btn-primary">Approve</button></td>
+                                        </form>
                                     </tr>
                                     @endif
                                 @endforeach
@@ -160,7 +164,11 @@
                                             @endif
                                         @endif
 
-                                        <td class="text-center"><button type="button" class="btn btn-primary">Approve</button></td>
+                                        <form action="{{route('perizinan.approve')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="perizinan_id" value="{{ $p->id }}">
+                                            <td class="text-center"><button type="submit" class="btn btn-primary">Approve</button></td>
+                                        </form>
                                     </tr>
                                     @endif
                                 @endforeach
@@ -228,7 +236,13 @@
                                             @endif
                                         @endif
 
-                                        <td class="text-center"><button type="button" class="btn btn-primary">Approve</button></td>
+                                        <form action="{{route('perizinan.approve')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="perizinan_id" value="{{ $p->id }}">
+                                            <td class="text-center"><button type="submit" class="btn btn-primary">Approve</button></td>
+                                        </form>
+
+                                        
                                     </tr>
                                     @endif
                                 @endforeach

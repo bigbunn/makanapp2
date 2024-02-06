@@ -219,6 +219,19 @@ class PerizinanController extends Controller
 
         return redirect('perizinan/izinkeluar');
     }
+
+    public function approve(Request $request){
+        $this->validate($request,[
+            'perizinan_id'=>'required'
+        ]);
+
+        $perizinan = Perizinan::where('id',$request->perizinan_id)->update([
+            'isApproved'=>True
+        ]);
+
+        return redirect("perizinan/all");
+    }
+
     /**
      * Store a newly created resource in storage.
      *

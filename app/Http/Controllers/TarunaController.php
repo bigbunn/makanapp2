@@ -9,6 +9,8 @@ use App\Models\Pantangan;
 use App\Models\Keluhan;
 use App\Models\Puasa;
 use App\Models\Perizinan;
+use App\Models\MenuPengganti;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -31,6 +33,7 @@ class TarunaController extends Controller
             $keluhan_taruna = Keluhan::where('user_id',$user_id)->get();
             $perizinan_taruna = Perizinan::where('user_id',$user_id)->get();
             $puasa_taruna = Puasa::where('user_id',$user_id)->get();
+            $menu_pengganti_taruna = MenuPengganti::where('user_id',$user_id)->get();
             return view('taruna.dashboard', [
                 'taruna'=>$taruna,
                 'kelas_taruna'=>$kelas_taruna,
@@ -38,7 +41,8 @@ class TarunaController extends Controller
                 'pantangan_taruna'=>$pantangan_taruna,
                 'keluhan_taruna'=>$keluhan_taruna,
                 'perizinan_taruna'=>$perizinan_taruna,
-                'puasa_taruna'=>$puasa_taruna
+                'puasa_taruna'=>$puasa_taruna,
+                'menu_pengganti_taruna'=>$menu_pengganti_taruna
             ]);
         }
         else{

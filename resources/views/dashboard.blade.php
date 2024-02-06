@@ -38,7 +38,13 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Data Makan</h6>
-                                        <h6 class="font-extrabold mb-0">26</h6>
+                                        <h6 class="font-extrabold mb-0">
+                                            @if(isset($datamakan[0]))
+                                                {{ count($datamakan) }}
+                                            @else
+                                                Tidak ada
+                                            @endif
+                                        </h6>
                                     </div>
                                 </div> 
                             </div>
@@ -58,7 +64,13 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Pantangan</h6>
-                                        <h6 class="font-extrabold mb-0">12</h6>
+                                        <h6 class="font-extrabold mb-0">
+                                            @if(isset($pantangan[0]))
+                                                {{ count($pantangan) }}
+                                            @else
+                                                Tidak ada
+                                            @endif
+                                        </h6>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +89,13 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Keluhan</h6>
-                                        <h6 class="font-extrabold mb-0">52</h6>
+                                        <h6 class="font-extrabold mb-0">
+                                            @if(isset($keluhan[0]))
+                                                {{ count($keluhan) }}
+                                            @else
+                                                Tidak ada
+                                            @endif
+                                        </h6>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +114,13 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Puasa</h6>
-                                        <h6 class="font-extrabold mb-0">0</h6>
+                                        <h6 class="font-extrabold mb-0">
+                                            @if(isset($puasa[0]))
+                                                {{ count($puasa) }}
+                                            @else
+                                                Tidak ada
+                                            @endif
+                                        </h6>
                                     </div>
                                 </div>
                             </div>

@@ -10,6 +10,7 @@ use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\PuasaController;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\TarunaController;
+use App\Http\Controllers\MenuPenggantiController;
 
 
 /*
@@ -61,8 +62,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
         Route::post('/createizinpesiar',[PerizinanController::class,'createIzinPesiar'])->name('createizinpesiar');
         Route::post('/createizinbermalam',[PerizinanController::class,'createIzinBermalam'])->name('createizinbermalam');
         Route::post('/createizinkeluar',[PerizinanController::class,'createIzinKeluar'])->name('createizinkeluar');
+        Route::post('/approve',[PerizinanController::class,'approve'])->name('approve');
         Route::get('/izinbermalam', [PerizinanController::class,'izinbermalamindex'])->name('izinbermalam');
         Route::get('/izinpesiar', [PerizinanController::class,'izinpesiarindex'])->name('izinpesiar');
         Route::get('/izinkeluar', [PerizinanController::class,'izinkeluarindex'])->name('izinkeluar');
+    });
+
+    Route::group(['prefix'=> 'menupengganti','as'=> 'menupengganti.'], function() {
+        Route::post('/create',[MenuPenggantiController::class,'create'])->name('create');
     });
 });

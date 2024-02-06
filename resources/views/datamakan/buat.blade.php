@@ -23,7 +23,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Data Makan</h4>
-                                
+                                <button type="button" onclick="updateTable()" class="btn btn-primary">Refresh</button>
                                 
                             </div>
                             <div class="card-body table-responsive">
@@ -47,7 +47,7 @@
                                         <tr class="table-info">
                                             <th>Ruang Makan</th>
                                             <th class="text-center collapse table-success" id="collapsePuasa"></th>
-                                            <th class="text-center"></th>
+                                            <th class="text-center" id="cell-rm-pagi"></th>
                                             <th class="text-center"></th>
                                             <th class="text-center"></th>
                                             <th class="text-center"></th>
@@ -116,9 +116,21 @@
                                             <th >Pantangan</th>
                                         </tr>
                                         <tr>
-                                            <th>Bani, Rahdian</th>
-                                            <th>2</th>
-                                            <th>Udang</th>
+                                            @foreach($pantangan as $pan)
+                                                @foreach($taruna as $t)
+                                                    @if($t->user_id==$pan->user_id && $t->jenis_kelamin == 'laki-laki')
+                                                        <th>{{$t->nama_lengkap}}</th>
+                                                        <th>1</th>
+                                                        <th>{{$pan->lauk_pantangan}}
+                                                        @foreach($pantangan as $pan2)
+                                                            @if($pan2->id != $pan->id && $pan2->user_id==$pan->user_id)
+                                                                , {{$pan2->lauk_pantangan}}
+                                                            @endif
+                                                        @endforeach
+                                                        </th>
+                                                    @endif
+                                                @endforeach
+                                            @endforeach
                                         </tr>
                                     </tbody>
                                     <thead class="thead-light text-center">
@@ -133,9 +145,21 @@
                                             <th >Pantangan</th>
                                         </tr>
                                         <tr>
-                                            <th>Khirsa</th>
-                                            <th>1</th>
-                                            <th>Udang</th>
+                                            @foreach($pantangan as $pan)
+                                                @foreach($taruna as $t)
+                                                    @if($t->user_id==$pan->user_id && $t->jenis_kelamin == 'perempuan')
+                                                        <th>{{$t->nama_lengkap}}</th>
+                                                        <th>1</th>
+                                                        <th>{{$pan->lauk_pantangan}}
+                                                        @foreach($pantangan as $pan2)
+                                                            @if($pan2->id != $pan->id && $pan2->user_id==$pan->user_id)
+                                                                , {{$pan2->lauk_pantangan}}
+                                                            @endif
+                                                        @endforeach
+                                                        </th>
+                                                    @endif
+                                                @endforeach
+                                            @endforeach
                                         </tr>
                                     </tbody>
                                 </table>
@@ -144,7 +168,7 @@
                     </div>
 
                     
-                    <div class="col-12 col-xl-7 col-md-12 col-lg-12">
+                    <div class="col-12 col-xl-7 col-md-12 col-lg-12" onchange="updateTable()">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Input Data</h4>
@@ -211,38 +235,38 @@
                                             <div class="card-body">
                                             <div class="input-group mb-3 collapse" id="collapsePuasa">
                                                 <label for="sahur" class="input-group-text col-4">Sahur</label>
-                                                <input class="col-8" type="text" name="sahur" id="sahur">
+                                                <input class="col-8" type="text" name="sahur" id="rmsahur">
                                                 </div>
 
                                             <div class="input-group mb-3">
                                                 <label for="pagi" class="input-group-text col-4">Pagi</label>
-                                                <input class="col-8" type="text" name="pagi" id="pagi">
+                                                <input class="col-8" type="text" name="pagi" id="rmpagi" value="{{$dataTaruna['jumlahPutra']}}">
                                                 </div>
 
 
                                                 <div class="input-group mb-3">
                                                 <label for="snackpagi" class="input-group-text col-4">Snack Pagi</label>
-                                                <input class="col-8" type="text" name="snackpagi" id="snackpagi">
+                                                <input class="col-8" type="text" name="snackpagi" id="rmsnackpagi" value="{{$dataTaruna['jumlahPutra']}}">
                                                 </div>
 
                                                 <div class="input-group mb-3">
                                                 <label for="siang" class="input-group-text col-4">Siang</label>
-                                                <input class="col-8" type="text" name="siang" id="siang">
+                                                <input class="col-8" type="text" name="siang" id="rmsiang" value="{{$dataTaruna['jumlahPutra']}}">
                                                 </div>
 
                                                 <div class="input-group mb-3">
                                                 <label for="malam" class="input-group-text col-4">Malam</label>
-                                                <input class="col-8" type="text" name="malam" id="malam">
+                                                <input class="col-8" type="text" name="malam" id="rmmalam" value="{{$dataTaruna['jumlahPutra']}}">
                                                 </div>
 
                                                 <div class="input-group mb-3">
                                                 <label for="snackmalam" class="input-group-text col-4">Snack Malam</label>
-                                                <input class="col-8" type="text" name="snackmalam" id="snackmalam">
+                                                <input class="col-8" type="text" name="snackmalam" id="rmsnackmalam" value="{{$dataTaruna['jumlahPutra']}}">
                                                 </div>
 
                                                 <div class="input-group mb-3 collapse" id="collapsePuasa">
                                                 <label for="takjil" class="input-group-text col-4">Takjil</label>
-                                                <input class="col-8" type="text" name="takjil" id="takjil">
+                                                <input class="col-8" type="text" name="takjil" id="rmtakjil">
                                                 </div>
                                             </div>
 
@@ -262,28 +286,28 @@
 
                                             <div class="input-group mb-3">
                                                 <label for="pagi" class="input-group-text col-4">Pagi</label>
-                                                <input class="col-8" type="text" name="pagi" id="pagi">
+                                                <input class="col-8" type="text" name="pagi" id="pagi" value="{{$dataTaruna['jumlahPutri']}}">
                                                 </div>
 
 
                                                 <div class="input-group mb-3">
                                                 <label for="snackpagi" class="input-group-text col-4">Snack Pagi</label>
-                                                <input class="col-8" type="text" name="snackpagi" id="snackpagi">
+                                                <input class="col-8" type="text" name="snackpagi" id="snackpagi" value="{{$dataTaruna['jumlahPutri']}}">
                                                 </div>
 
                                                 <div class="input-group mb-3">
                                                 <label for="siang" class="input-group-text col-4">Siang</label>
-                                                <input class="col-8" type="text" name="siang" id="siang">
+                                                <input class="col-8" type="text" name="siang" id="siang" value="{{$dataTaruna['jumlahPutri']}}">
                                                 </div>
 
                                                 <div class="input-group mb-3">
                                                 <label for="malam" class="input-group-text col-4">Malam</label>
-                                                <input class="col-8" type="text" name="malam" id="malam">
+                                                <input class="col-8" type="text" name="malam" id="malam" value="{{$dataTaruna['jumlahPutri']}}">
                                                 </div>
 
                                                 <div class="input-group mb-3">
                                                 <label for="snackmalam" class="input-group-text col-4">Snack Malam</label>
-                                                <input class="col-8" type="text" name="snackmalam" id="snackmalam">
+                                                <input class="col-8" type="text" name="snackmalam" id="snackmalam" value="{{$dataTaruna['jumlahPutri']}}">
                                                 </div>
 
                                                 <div class="input-group mb-3 collapse" id="collapsePuasa">
@@ -467,6 +491,18 @@
             </div>
         </div>
     </section> -->
+
+    @section('script')
+        <script>
+            updateTable();
+            function updateTable(){
+                var rm1 = document.getElementById("rmpagi").value;
+
+                document.getElementById("cell-rm-pagi").innerText = rm1;
+            }
+        </script>
+
+    @endsection
 </x-app-layout>
 
 

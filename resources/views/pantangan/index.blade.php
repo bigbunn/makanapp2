@@ -56,11 +56,10 @@
                             </thead>
                             <tbody>
                             @foreach($pantangan as $p)
-                                {{$t=$taruna->where('user_id',$p->user_id)->first()}}
-                                {{$u=$user->where('id',$p->user_id)->first()}}
-                                {{$kel=$kelas->where('id',$t->kelas_id)->first()}}
-                                {{$un=$unit->where('id',$t->unit_id)->first()}}
-                                <tr>
+                                
+                            <tr>
+                                @foreach($user as $u)
+                                    @if($u->id == $p->user_id)
                                     <td class="col-4">
                                         <div class="d-flex align-items-center">
                                             <div class="avatar avatar-md">
@@ -69,23 +68,39 @@
                                             <p class="font-bold ms-3 mb-0">{{$u->name}}</p>
                                         </div>
                                     </td>
-                                    <td class="col-auto">
-                                        <p class=" mb-0">{{$kel->nama_kelas}}</p>
-                                    </td>
-                                    <td class="col-auto">
-                                        <p class=" mb-0">{{$un->nama_unit}}</p>
-                                    </td>
+                                    @endif
+                                @endforeach
+                                
+                                
+
+                                @foreach($taruna as $t)
+                                    @if($t->user_id == $p->user_id)
+                                        @foreach($kelas as $kel)
+                                            @if($kel->id ==$t->kelas_id)
+                                            <td class="col-auto">
+                                                <p class=" mb-0">{{$kel->nama_kelas}}</p>
+                                            </td>
+                                            @endif
+                                        @endforeach
+                                        @foreach($unit as $un)
+                                            @if($un->id ==$t->unit_id)
+                                            <td class="col-auto">
+                                                <p class=" mb-0">{{$un->nama_unit}}</p>
+                                            </td>
+                                            @endif
+                                        @endforeach
                                     <td class="col-auto">
                                         <p class=" mb-0">{{$t->nomor_kamar}}</p>
                                     </td>
-                                    <td class="col-auto">
-                                        <p class=" mb-0">{{$p->lauk_pantangan}}</p>
-                                    </td>
-                                    <td class="col-auto">
-                                        <p class=" mb-0">{{$p->keterangan_pantangan}}</p>
-                                    </td>
-                                </tr>
-                                       
+                                    @endif
+                                @endforeach
+                                <td class="col-auto">
+                                    <p class=" mb-0">{{$p->lauk_pantangan}}</p>
+                                </td>
+                                <td class="col-auto">
+                                    <p class=" mb-0">{{$p->keterangan_pantangan}}</p>
+                                </td>
+                            </tr>
                                     
                             @endforeach
                                

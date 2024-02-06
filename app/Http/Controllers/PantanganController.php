@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Taruna;
 use App\Models\Kelas;
 use App\Models\Unit;
+use App\Models\MenuPengganti;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class PantanganController extends Controller
@@ -38,8 +40,11 @@ class PantanganController extends Controller
     }
 
     public function pengajuan(){
-        $datapantangan=Pantangan::where("user_id",Auth()->user()->id)->get();
-        return view ('pantangan.pengajuan',['datapantangan'=>$datapantangan]);
+        $user_id = Auth()->user()->id;
+        $menu_pengganti = MenuPengganti::where('user_id',$user_id)->get();
+        $menu = Menu::all();
+        $datapantangan=Pantangan::where("user_id",$user_id)->get();
+        return view ('pantangan.pengajuan',['datapantangan'=>$datapantangan,'menu_pengganti'=>$menu_pengganti]);
     }
 
     /**

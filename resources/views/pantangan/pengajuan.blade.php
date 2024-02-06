@@ -63,7 +63,47 @@
         </div>
     </section>
 
-    
+    @if(isset($menu_pengganti[0]))
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="card-title">Menu Pengganti</h6>
+            </div>
+            <div class="card-body">
+                <table class="table datatable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>No</th>
+                            <th>Tanggal</th>
+                            <th>Menu Pengganti</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        @foreach($menu_pengganti as $mp)
+                            @foreach($menu as $m)
+                                @if($m->id == $mp->menu_id)
+                                <tr>
+                                    <th>
+                                    @if(isset($i))
+                                        {{$i}}
+                                    @else
+                                        {{$i=1}}
+                                    @endif
+                                    </th>
+                                    <th>{{$m->tanggal}}</th>
+                                    <th>{{$mp->menu_pengganti}}</th>
+                                </tr>
+                                @endif
+                            @endforeach
+                            {{$i+=1}}
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    @endif
     <section class="section">
         <div class="card">
             <div class="card-header">

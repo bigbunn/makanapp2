@@ -45,16 +45,24 @@
                 <div class="col-6 col-lg-3 col-md-6">
                     <div class="card">
                         <a href="{{route('pantangan.pengajuan')}}">
+                        
                             <div class="card-body px-4 py-4-5">
+                                
                                 <div class="row">
+                                
                                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        
                                         <div class="stats-icon purple mb-2">
                                             <i class="iconly-boldShow"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        
                                         <h6 class="text-muted font-semibold">Pantangan</h6>
                                         <h6 class="font-extrabold mb-0">
+                                            @if(isset($menu_pengganti_taruna[0]))
+                                                <span class="badge badge-notify bg-danger position-absolute" style="top: -10px; right: -10px;">{{count($menu_pengganti_taruna)}}</span>
+                                            @endif
                                             @if(isset($pantangan_taruna[0]))
                                                 {{ count($pantangan_taruna) }}
                                             @else

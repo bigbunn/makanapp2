@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Datamakan;
+use App\Models\Taruna;
+use App\Models\Pantangan;
+use App\Models\Puasa;
+use App\Models\Perizinan;
 use Illuminate\Http\Request;
 
 class DatamakanController extends Controller
@@ -21,7 +25,17 @@ class DatamakanController extends Controller
 
     public function buat()
     {
-        return view('datamakan.buat');
+        $taruna = Taruna::all();
+        $pantangan = Pantangan::all();
+        $puasa = Puasa::all();
+        $perizinan = Perizinan::all();
+
+        $dataTaruna = [
+            'jumlahPutra' => count(Taruna::where("jenis_kelamin","laki-laki")->get()),
+            'jumlahPutri' => count(Taruna::where("jenis_kelamin","perempuan")->get()),
+        ];
+
+        return view("datamakan.buat",compact(['dataTaruna']),['taruna'=>$taruna,'pantangan'=>$pantangan,'puasa'=>$puasa,'perizinan'=>$perizinan]);
     }
 
     /**
