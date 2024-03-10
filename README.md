@@ -38,6 +38,9 @@
     ```bash
     php artisan serve
     ```
+    ```bash
+    npm run dev
+    ```
 
 7. Login credentials
 
